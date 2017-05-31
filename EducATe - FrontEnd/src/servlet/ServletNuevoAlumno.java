@@ -26,10 +26,12 @@ public class ServletNuevoAlumno extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			String tipoDocumento = "DNI";
-			int nroDocumento = 123456;
-			String nombre = "Cris";
-			String apellido = "Tal";
+			
+			
+			String tipoDocumento = request.getParameter("tipoDocumento");
+			int nroDocumento = Integer.parseInt(request.getParameter("nroDocumento"));
+			String nombre = request.getParameter("nombre");
+			String apellido = request.getParameter("apellido");
 			
 			int alumno = RmiClient.getInstance().nuevoAlumno(tipoDocumento, nroDocumento, nombre, apellido);
 			
