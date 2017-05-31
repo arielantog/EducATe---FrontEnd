@@ -3,6 +3,7 @@
 	<name>EducATe - FrontEnd</name>
 	<comment></comment>
 	<projects>
+		<project>EducATe-RMI</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
