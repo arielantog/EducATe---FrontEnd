@@ -21,6 +21,7 @@ public class ServletNuevoAlumno extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		doPost(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -38,6 +39,7 @@ public class ServletNuevoAlumno extends HttpServlet {
 			System.out.println("El alumno agregado es el: " + alumno);
 		} catch (Exception e) {
 			System.out.println(e);
+			
 		}
 	}
 }

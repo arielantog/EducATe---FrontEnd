@@ -1,5 +1,6 @@
 <%@page import="java.util.*"%>
 <%@page import="servlet.*"%>
+<%@page import="rmi.RmiClient"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +39,9 @@
       	<button type="submit">Registrar</button>
       </form>
 	<!-- Fin de formulario -->
-
+	
+	
+	
     </div>
 </body>
 </html>
