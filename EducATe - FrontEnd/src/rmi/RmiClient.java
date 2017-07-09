@@ -89,4 +89,31 @@ public class RmiClient {
 		}
 		return null;
 	}	
+	
+	public int alumnoBuscarLeccion(int alumno, int juego) throws RemoteException{
+		try {
+			return Rmi.alumnoBuscarLeccion(alumno, juego);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	public void alumnoAgregarEnsenianza(int alumno, int leccion, boolean resultado) throws RemoteException{
+		try {
+			Rmi.alumnoAgregarEnsenianza(alumno, leccion, resultado);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return;
+	}
+
+	public int alumnoGetNivel(int alumno) {
+		try {
+			return Rmi.alumnoGetNivel(alumno);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }
