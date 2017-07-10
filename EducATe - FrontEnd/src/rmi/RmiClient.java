@@ -12,7 +12,7 @@ public class RmiClient {
 	private static RmiClient instance;
 
 	public static RmiClient getInstance() throws RemoteException {
-		if (Rmi == null)
+		if (instance == null)
 			try {
 				instance = new RmiClient();
 			} catch (Exception e) {

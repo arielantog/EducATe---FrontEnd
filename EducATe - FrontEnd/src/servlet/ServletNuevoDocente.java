@@ -11,31 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import rmi.RmiClient;
 
-/**
- * Servlet implementation class ServletNuevoDocente
- */
 @WebServlet("/ServletNuevoDocente")
 public class ServletNuevoDocente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public ServletNuevoDocente() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			String tipoDocumento = request.getParameter("tipoDocumento");
