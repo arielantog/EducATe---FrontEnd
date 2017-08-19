@@ -23,7 +23,11 @@ public class ServletAlumnoActual extends HttpServlet {
     
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		    response.getWriter().println(alumnoActual);
+		try{    
+			response.getWriter().println(alumnoActual);
+		}catch(Exception e){
+			System.out.println(e);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
