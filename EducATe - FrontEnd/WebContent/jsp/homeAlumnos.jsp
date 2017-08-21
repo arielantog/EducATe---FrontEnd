@@ -14,7 +14,7 @@ Object user = session.getAttribute("currentSessionUser");
 %>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Home Docentes</title>
+		<title>Home Alumnos</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -29,7 +29,7 @@ Object user = session.getAttribute("currentSessionUser");
 				<a href="index.html" class="title">EducATe</a>
 				<nav>
 					<ul>
-						<li><a href="jsp/homeDocentes.jsp">Home Alumnos</a></li>
+						<li><a href="jsp/homeAlumnosjsp">Home Alumnos</a></li>
 						<li><a href="#">Mi Perfil</a></li>
 						<%if(request.getAttribute("alumno") != null){
 							AlumnoDTO alumno = (AlumnoDTO)request.getAttribute("alumno");
