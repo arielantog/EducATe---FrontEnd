@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dto.AlumnoDTO;
+import dto.TemaDTO;
 import rmi.RmiClient;
 
 @WebServlet("/ServletLoginAlumno")
@@ -39,6 +41,8 @@ public class ServletLoginAlumno extends HttpServlet {
 				sesion.setAttribute("currentSessionUser",alumno);
 				ServletAlumnoActual.alumnoActual = alumno.getId();
 				request.setAttribute("alumno", alumno);
+				List<TemaDTO> temas = RmiClient.getInstance().listarTemas();
+				request.setAttribute("temas", temas);
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/homeAlumnos.jsp");
 				dispatcher.forward(request, response);
 			}

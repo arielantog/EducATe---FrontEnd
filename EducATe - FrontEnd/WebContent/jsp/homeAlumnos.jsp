@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.*" %>
 <%@ page import="dto.AlumnoDTO" %>
+<%@ page import="dto.TemaDTO" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <%
@@ -29,8 +30,9 @@ Object user = session.getAttribute("currentSessionUser");
 				<a href="index.html" class="title">EducATe</a>
 				<nav>
 					<ul>
-						<li><a href="jsp/homeAlumnosjsp">Home Alumnos</a></li>
+						<li><a href="jsp/homeAlumnos.jsp">Home Alumnos</a></li>
 						<li><a href="#">Mi Perfil</a></li>
+						<li><a href="#">Puntos: #######</a></li>
 						<%if(request.getAttribute("alumno") != null){
 							AlumnoDTO alumno = (AlumnoDTO)request.getAttribute("alumno");
 							
@@ -46,10 +48,53 @@ Object user = session.getAttribute("currentSessionUser");
 
 				<!-- Main -->
 					<section id="main" class="wrapper">
-						<div class="inner">
-							<h1 class="major">Principal Alumnos</h1>
-							
-							
+		            <!-- Imagen Avatar -->
+		            <div class="avatar-principal-alumnos">
+	              		<img class="avatar-principal-alumnos" src="images/avatar.png" alt="">
+		              	<p><a href="ServletListarAlimentos">Mi avatar</a></p>
+		            </div>
+		            <div class="inner">
+						<h1 class="major">Principal Alumnos</h1>
+					</div>
+					</section>
+					<section class="lista-button" id="principalAlumnos">
+						<table border="1" cellpading="0" cellspacing="0">
+		          			<caption><h3 class="table-title">Temas</h3></caption>
+		          			
+		          			<%if(request.getAttribute("temas") != null){
+		          				List<TemaDTO> temas = (List<TemaDTO>)request.getAttribute("temas");
+		          				Iterator<TemaDTO> itema = temas.iterator();
+		          				while(itema.hasNext()) {
+		          					TemaDTO t = itema.next();
+							%>
+					    	<tr>
+					            <td href="homeDocentes.html"><%=t.getDescripcion() %></td>
+					            	
+					            <td> <a href="homeDocentes.html"><%=t.getDescripcion() %></a></td>
+					            		
+					            <td><%=t.getDescripcion() %></td>
+					        </tr>
+					        	
+				 		 	  <% } %>
+				 		  <% } %>
+					        <tr>
+					            <td>Tema 4</td>
+					            <td>Tema 5</td>
+					            <td>Tema 6</td>
+					        </tr>
+					        <tr>
+					            <td>Tema 7</td>
+					            <td>Tema 8</td>
+					            <td>Tema 9</td>
+					        </tr>
+					        <tr>
+					            <td>Tema 10</td>
+					            <td>Tema 11</td>
+					            <td>Tema 12</td>
+					        </tr>
+					    </table>
+						<div class="bottom-buttons">
+		        			<button type="button">Reforzar nivel recomendado</button>
 						</div>
 					</section>
 			</div>

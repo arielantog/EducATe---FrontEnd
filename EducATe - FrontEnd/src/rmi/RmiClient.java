@@ -2,9 +2,12 @@ package rmi;
 
 import java.rmi.Naming;
 import java.rmi.RemoteException;
+import java.util.List;
 
+import dto.AlimentoDTO;
 import dto.AlumnoDTO;
 import dto.DocenteDTO;
+import dto.TemaDTO;
 
 public class RmiClient {
 	private static IRmiServer Rmi;
@@ -115,5 +118,23 @@ public class RmiClient {
 			e.printStackTrace();
 		}
 		return 0;
+	}
+
+	public List<TemaDTO> listarTemas() throws RemoteException{
+		try {
+			return Rmi.listarTemas();
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public List<AlimentoDTO> listarAlimentos() throws RemoteException{
+		try {
+			return Rmi.listarAlimentos();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
