@@ -41,9 +41,10 @@ public class ServletLoginAlumno extends HttpServlet {
 				sesion.setAttribute("currentSessionUser",alumno);
 				ServletAlumnoActual.alumnoActual = alumno.getId();
 				request.setAttribute("alumno", alumno);
-				List<TemaDTO> temas = RmiClient.getInstance().listarTemas();
-				request.setAttribute("temas", temas);
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/homeAlumnos.jsp");
+//				List<TemaDTO> temas = RmiClient.getInstance().listarTemas();
+//				request.setAttribute("temas", temas);
+//				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/homeAlumnos.jsp");
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ServletListarTemas");
 				dispatcher.forward(request, response);
 			}
 			else{

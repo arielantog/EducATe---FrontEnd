@@ -6,6 +6,7 @@ import java.util.List;
 
 import dto.AlimentoDTO;
 import dto.AlumnoDTO;
+import dto.CursoDTO;
 import dto.DocenteDTO;
 import dto.TemaDTO;
 
@@ -133,6 +134,53 @@ public class RmiClient {
 		try {
 			return Rmi.listarAlimentos();
 		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public AlumnoDTO traerPerfilAlumno(String usuario) throws RemoteException{
+		try {
+			return Rmi.traerPerfilAlumno(usuario);
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public int modificarAlumno(String tipoDocumento, int nroDocumento, String nombre, String apellido,
+			String password, String mail, String usuario) throws RemoteException{
+		try {
+			return Rmi.modificarAlumno(tipoDocumento, nroDocumento, nombre, apellido, password, mail, usuario) ;
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	public int modificarDocente(String tipoDocumento, int nroDocumento, String nombre, String apellido,
+			String password, String mail) throws RemoteException{
+		try {
+			return Rmi.modificarDocente(tipoDocumento, nroDocumento, nombre, apellido, mail, password);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	public DocenteDTO traerPerfilDocente(String tipoDocumento, int nroDocumento) {
+		try {
+			return Rmi.traerPerfilDocente(tipoDocumento, nroDocumento);
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public List<CursoDTO> listarCursosPorDocente(int docente) {
+		try {
+			return Rmi.listarCursosPorDocente(docente);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;

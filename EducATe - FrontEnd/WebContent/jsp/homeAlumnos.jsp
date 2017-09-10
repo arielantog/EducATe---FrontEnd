@@ -9,7 +9,7 @@
 //HttpSession objSesion = request.getSession(true); 
 //String user = request.getParameter("usuario"); //aqui tu identificador de usuario
 //Obtengo el usuario logeado
-Object user = session.getAttribute("currentSessionUser");
+AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 //objSesion.setAttribute("usuario", user );
 //out.println("Poniendo usuario en sesion ...");
 %>
@@ -30,14 +30,11 @@ Object user = session.getAttribute("currentSessionUser");
 				<a href="index.html" class="title">EducATe</a>
 				<nav>
 					<ul>
-						<li><a href="jsp/homeAlumnos.jsp">Home Alumnos</a></li>
-						<li><a href="#">Mi Perfil</a></li>
-						<li><a href="#">Puntos: #######</a></li>
-						<%if(request.getAttribute("alumno") != null){
-							AlumnoDTO alumno = (AlumnoDTO)request.getAttribute("alumno");
-							
-						%>
-						<li><a href="#"><%=alumno.getNombre() %></a></li>
+						<%if(user != null){%>
+						<li><a href="homeAlumnos.jsp" class="active">Home Alumnos</a></li>
+						<li><a href="ServletPerfilAlumno">Mi Perfil</a></li>
+						<li><a href="#">Puntos: <%=user.getPuntos()%></a></li>
+						<li><a href="#"><%=user.getNombre() %></a></li>
 						<%} %>
 					</ul>
 				</nav>
@@ -77,21 +74,6 @@ Object user = session.getAttribute("currentSessionUser");
 					        	
 				 		 	  <% } %>
 				 		  <% } %>
-					        <tr>
-					            <td>Tema 4</td>
-					            <td>Tema 5</td>
-					            <td>Tema 6</td>
-					        </tr>
-					        <tr>
-					            <td>Tema 7</td>
-					            <td>Tema 8</td>
-					            <td>Tema 9</td>
-					        </tr>
-					        <tr>
-					            <td>Tema 10</td>
-					            <td>Tema 11</td>
-					            <td>Tema 12</td>
-					        </tr>
 					    </table>
 						<div class="bottom-buttons">
 		        			<button type="button">Reforzar nivel recomendado</button>

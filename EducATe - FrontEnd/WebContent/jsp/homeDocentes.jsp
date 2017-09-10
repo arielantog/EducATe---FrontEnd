@@ -8,7 +8,7 @@
 //HttpSession objSesion = request.getSession(true); 
 //String user = request.getParameter("usuario"); //aqui tu identificador de usuario
 //Obtengo el usuario logeado
-Object user = session.getAttribute("currentSessionUser");
+DocenteDTO user = (DocenteDTO) session.getAttribute("currentSessionUser");
 //objSesion.setAttribute("usuario", user );
 //out.println("Poniendo usuario en sesion ...");
 %>
@@ -29,15 +29,10 @@ Object user = session.getAttribute("currentSessionUser");
 				<a href="index.html" class="title">EducATe</a>
 				<nav>
 					<ul>
-						<li><a href="jsp/homeDocentes.jsp">Home Docentes</a></li>
-						<li><a href="#">Mi Perfil</a></li>
-						<li><a href="#">Cursos</a></li>
-						<li><a href="#">Buscar Alumnos</a></li>
-						<%if(request.getAttribute("docente") != null){
-							DocenteDTO docente = (DocenteDTO)request.getAttribute("docente");
-							
-						%>
-						<li><a href="#"><%=docente.getNombre() %></a></li>
+						<%if(user != null){%>
+						<li><a href="homeDocentes.jsp" class="active">Home Docentes</a></li>
+						<li><a href="ServletPerfilDocente">Mi Perfil</a></li>
+						<li><a href="#"><%=user.getNombre() %></a></li>
 						<%} %>
 					</ul>
 				</nav>
@@ -50,12 +45,19 @@ Object user = session.getAttribute("currentSessionUser");
 					<section id="main" class="wrapper">
 						<div class="inner">
 							<h1 class="major">Principal Docentes</h1>
-							
-							
+
+              				<div class="container container-home-docentes">
+	    						<!--  <button type="button" name="admCursos" class="home-docentes-buttons"> Administrar cursos </button>-->
+	    						<a href="ServletListarCursosPorDocente" class="button submit home-docentes-buttons"> Administrar Cursos </a>
+	    						<form action="ServletListarCursosPorDocente" method="POST">
+	    						<button type="submit" name="estadisticas" class="home-docentes-buttons">Estadísticas</button>
+    							</form>
+    						</div>
 						</div>
 					</section>
 			</div>
-			
+		
+		<!-- Footer -->	
 		<footer id="footer" class="wrapper style1-alt">
 			<div class="inner">
 				<ul class="menu">
