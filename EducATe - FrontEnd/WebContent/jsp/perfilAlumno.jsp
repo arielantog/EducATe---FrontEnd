@@ -13,7 +13,7 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="../assets/css/main.css" /> 
+		<link rel="stylesheet" href="/EducATe_-_FrontEnd/assets/css/main.css" /> 
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
@@ -21,12 +21,12 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 
 		<!-- Header -->
 			<header id="header">
-				<a href="index.html" class="title">EducATe</a>
+				<a href="/EducATe_-_FrontEnd/index.html" class="title">EducATe</a>
         		<nav>
 					<ul>
 						<%if(user != null){%>
-						<li><a href="homeAlumnos.jsp">Home Alumnos</a></li>
-						<li><a href="ServletPerfilAlumno" class="active">Mi Perfil</a></li>
+						<li><a href="/EducATe_-_FrontEnd/ServletListarTemas">Home Alumnos</a></li>
+						<li><a href="/EducATe_-_FrontEnd/ServletPerfilAlumno" class="active">Mi Perfil</a></li>
 						<li><a href="#">Puntos: <%=user.getPuntos()%></a></li>
 						<li><a href="#"><%=user.getNombre() %></a></li>
 						<%} %>
@@ -42,7 +42,7 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 							<h1 class="major">Mi Perfil</h1>
 							<span class="image fit"><img src="images/escuela.png" alt="" /></span>
 							<!-- Inicio de formulario -->
-							<form action="ServletModificarAlumno" method="post">
+							<form action="/EducATe_-_FrontEnd/ServletModificarAlumno" method="post">
 								<label for="tipoDocumento">Tipo de documento</label>
 								<input name="tipoDocumento" type="text" value="<%=user.getTipoDocumento()%>" disabled>
 								<label for="nroDocumento">Número de documento</label>

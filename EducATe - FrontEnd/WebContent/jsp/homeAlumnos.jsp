@@ -19,7 +19,7 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="/EducATe_-_FrontEnd/assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
@@ -27,12 +27,12 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 
 		<!-- Header -->
 			<header id="header">
-				<a href="index.html" class="title">EducATe</a>
+				<a href="/EducATe_-_FrontEnd/index.html" class="title">EducATe</a>
 				<nav>
 					<ul>
 						<%if(user != null){%>
-						<li><a href="homeAlumnos.jsp" class="active">Home Alumnos</a></li>
-						<li><a href="ServletPerfilAlumno">Mi Perfil</a></li>
+						<li><a href="/EducATe_-_FrontEnd/jsp/homeAlumnos.jsp" class="active">Home Alumnos</a></li>
+						<li><a href="/EducATe_-_FrontEnd/ServletPerfilAlumno">Mi Perfil</a></li>
 						<li><a href="#">Puntos: <%=user.getPuntos()%></a></li>
 						<li><a href="#"><%=user.getNombre() %></a></li>
 						<%} %>
@@ -48,7 +48,7 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 		            <!-- Imagen Avatar -->
 		            <div class="avatar-principal-alumnos">
 	              		<img class="avatar-principal-alumnos" src="images/avatar.png" alt="">
-		              	<p><a href="ServletListarAlimentos">Mi avatar</a></p>
+		              	<p><a href="/EducATe_-_FrontEnd/ServletListarAlimentos">Mi avatar</a></p>
 		            </div>
 		            <div class="inner">
 						<h1 class="major">Principal Alumnos</h1>
@@ -65,9 +65,9 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 		          					TemaDTO t = itema.next();
 							%>
 					    	<tr>
-					            <td href="homeDocentes.html"><%=t.getDescripcion() %></td>
+					            <td href="/EducATe_-_FrontEnd/homeDocentes.html"><%=t.getDescripcion() %></td>
 					            	
-					            <td> <a href="homeDocentes.html"><%=t.getDescripcion() %></a></td>
+					            <td> <a href="/EducATe_-_FrontEnd/homeDocentes.html"><%=t.getDescripcion() %></a></td>
 					            		
 					            <td><%=t.getDescripcion() %></td>
 					        </tr>

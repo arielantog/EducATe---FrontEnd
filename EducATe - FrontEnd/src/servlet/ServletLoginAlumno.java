@@ -1,8 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dto.AlumnoDTO;
-import dto.TemaDTO;
 import rmi.RmiClient;
 
 @WebServlet("/ServletLoginAlumno")
@@ -41,11 +38,7 @@ public class ServletLoginAlumno extends HttpServlet {
 				sesion.setAttribute("currentSessionUser",alumno);
 				ServletAlumnoActual.alumnoActual = alumno.getId();
 				request.setAttribute("alumno", alumno);
-//				List<TemaDTO> temas = RmiClient.getInstance().listarTemas();
-//				request.setAttribute("temas", temas);
-//				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/homeAlumnos.jsp");
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ServletListarTemas");
-				dispatcher.forward(request, response);
+				request.getRequestDispatcher("/ServletListarTemas").forward(request, response);
 			}
 			else{
 				System.out.println("login incorrecto");

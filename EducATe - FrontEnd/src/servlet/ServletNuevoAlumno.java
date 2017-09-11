@@ -1,8 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,10 +35,9 @@ public class ServletNuevoAlumno extends HttpServlet {
 			String mail = request.getParameter("mail");
 			
 			int alumno = RmiClient.getInstance().nuevoAlumno(tipoDocumento, nroDocumento, nombre, apellido, password, mail, usuario);
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/homeAlumnos.jsp");
-			dispatcher.forward(request, response);
-			
+			request.setAttribute("alumno", alumno);
+			request.getRequestDispatcher("/ServletListarTemas").forward(request, response);
+
 			System.out.println("El alumno agregado es el: " + alumno);
 		} catch (Exception e) {
 			System.out.println(e);
