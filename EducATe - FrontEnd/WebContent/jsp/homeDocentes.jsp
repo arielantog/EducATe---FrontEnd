@@ -50,7 +50,7 @@ DocenteDTO user = (DocenteDTO) session.getAttribute("currentSessionUser");
 	    						<!--  <button type="button" name="admCursos" class="home-docentes-buttons"> Administrar cursos </button>-->
 	    						<a href="/EducATe_-_FrontEnd/ServletListarCursosPorDocente" class="button submit home-docentes-buttons"> Administrar Cursos </a>
 	    						<form action="/EducATe_-_FrontEnd/ServletListarCursosPorDocente" method="POST">
-	    						<button type="submit" name="estadisticas" class="home-docentes-buttons">Estadísticas</button>
+	    							<button type="submit" name="estadisticas" class="home-docentes-buttons">Estadísticas</button>
     							</form>
     						</div>
 						</div>

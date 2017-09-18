@@ -185,4 +185,13 @@ public class RmiClient {
 		}
 		return null;
 	}
+
+	public CursoDTO traerCursoDocente(int docente, int curso) {
+		try {
+			return Rmi.traerCursoDocente(docente, curso);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
