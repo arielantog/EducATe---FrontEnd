@@ -22,7 +22,7 @@
 
 		<!-- Header -->
 			<header id="header">
-				<a href="./EducATe_-_FrontEnd/index.html" class="title">EducATe</a>
+				<a href="/EducATe_-_FrontEnd/index.html" class="title">EducATe</a>
 				<nav>
 					<ul>
 						<%if(user != null){%>
@@ -51,7 +51,7 @@
 		          				List<CursoDTO> cursos = (List<CursoDTO>)request.getAttribute("cursos");
 		          				for(CursoDTO c : cursos){%>
 					    	<tr>         	
-					            <td> <a href="ServletMostrarCurso"><%=c.getDescripcion() %></a></td>
+					            <td> <a href="ServletMostrarCurso?nroCurso=<%=c.getId()%>"><%=c.getDescripcion() %></a></td>
 					           
 					        </tr>
 					        	<% } %>

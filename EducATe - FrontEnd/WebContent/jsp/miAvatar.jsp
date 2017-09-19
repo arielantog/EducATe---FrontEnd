@@ -2,8 +2,12 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.*" %>
 <%@ page import="dto.AlimentoDTO" %>
+<%@ page import="dto.AlumnoDTO" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<%
+AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
+%>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Mi Avatar</title>
@@ -21,15 +25,16 @@
 				<a href="/EducATe_-_FrontEnd/index.html" class="title">EducATe</a>
 				<nav>
 					<ul>
+						<%if(user != null){%>
 						<li><a href="/EducATe_-_FrontEnd/ServletListarTemas">Home Alumnos</a></li>
 						<li><a href="/EducATe_-_FrontEnd/jsp/perfilAlumno.jsp">Mi Perfil</a></li>
-						<li><a href="#">Puntos: #######</a></li>
+						<li><a href="#">Puntos: <%=user.getPuntos()%></a></li>
 						<!-- <%//if(request.getAttribute("alumno") != null){
 							//AlumnoDTO alumno = (AlumnoDTO)request.getAttribute("alumno");
 
 						%> -->
-						<li><a href="#"> Nombre <!-- <%//=alumno.getNombre() %>--></a></li>
-						<!-- <%//} %> -->
+						<li><a href="#"><%=user.getNombre() %></a></li>
+						<%} %>
 					</ul>
 				</nav>
 			</header>
