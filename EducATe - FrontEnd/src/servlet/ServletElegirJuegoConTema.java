@@ -47,6 +47,8 @@ public class ServletElegirJuegoConTema extends HttpServlet {
 			case 4:
 				response.sendRedirect("/EducATe_-_FrontEnd/juegos/problemasAmbientales1/index.html");
 				break;
+			default:
+				System.out.println("Esto anda como el orto");	
 			}
 			
 		} catch (Exception e) {

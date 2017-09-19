@@ -1,12 +1,15 @@
 package servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import dto.AlumnoDTO;
 import rmi.RmiClient;
 
 @WebServlet("/ServletNuevoAlumno")
@@ -34,7 +37,13 @@ public class ServletNuevoAlumno extends HttpServlet {
 			String password = request.getParameter("password");
 			String mail = request.getParameter("mail");
 			
-			int alumno = RmiClient.getInstance().nuevoAlumno(tipoDocumento, nroDocumento, nombre, apellido, password, mail, usuario);
+			AlumnoDTO alumno = RmiClient.getInstance().nuevoAlumno(tipoDocumento, nroDocumento, nombre, apellido, password, mail, usuario);
+			
+			HttpSession sesion = request.getSession(true);
+			//Guardo la sesion del usuario que se acaba de loguear
+			sesion.setAttribute("currentSessionUser",alumno);
+			ServletAlumnoActual.alumnoActual = alumno.getId();
+			
 			request.setAttribute("alumno", alumno);
 			request.getRequestDispatcher("/ServletListarTemas").forward(request, response);
 
