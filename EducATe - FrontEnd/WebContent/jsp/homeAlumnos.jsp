@@ -64,19 +64,15 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 		          				while(itema.hasNext()) {
 		          					TemaDTO t = itema.next();
 							%>
-					    	<tr>
-					            <td href="/EducATe_-_FrontEnd/homeDocentes.html"><%=t.getDescripcion() %></td>
-					            	
-					            <td> <a href="/EducATe_-_FrontEnd/homeDocentes.html"><%=t.getDescripcion() %></a></td>
-					            		
-					            <td><%=t.getDescripcion() %></td>
+					    	<tr>			            	
+					            <td> <a href="ServletElegirJuegoConTema?nroTema=<%=t.getId()%>"><%=t.getDescripcion() %></a></td>		
 					        </tr>
 					        	
 				 		 	  <% } %>
 				 		  <% } %>
 					    </table>
 						<div class="bottom-buttons">
-		        			<button type="button">Reforzar nivel recomendado</button>
+		        			<a href="ServletElegirJuegoSinTema" class="button submit home-docentes-buttons">Reforzar nivel recomendado</a>
 						</div>
 					</section>
 			</div>

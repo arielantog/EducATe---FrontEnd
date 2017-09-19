@@ -194,4 +194,24 @@ public class RmiClient {
 		}
 		return null;
 	}
+
+	public int elegirJuegoSinTema(int nroAlumno) {
+		try{
+			return Rmi.elegirJuegoSinTema(nroAlumno);
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	public int elegirJuegoConTema(int nroAlumno, int nroTema) {
+		try{
+			return Rmi.elegirJuegoConTema(nroAlumno,nroTema);
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }
