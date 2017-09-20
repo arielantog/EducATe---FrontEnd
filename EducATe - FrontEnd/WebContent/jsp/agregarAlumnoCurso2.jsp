@@ -60,7 +60,6 @@
 						</select>
 						<!-- Fin Tipo de Documento -->
 						<input class="filtro-busqueda-alumno" name="nroDocumento" type="text" value="" placeholder="Numero de documento">
-						<input type="hidden" value="<%=nroCurso%>">
 						<!--   <i aria-hidden="true" class="fa fa-search fa-2x"></i> -->
 						<a class="fa fa-search fa-2x lupa-button" aria-hidden="true" onclick="document.getElementById('buscarForm').submit()"></a>
 					</section>
@@ -75,7 +74,7 @@
 									<th>Nombre</th>
 									<th>Usuario</th>
 								</tr>
-								<%AlumnoDTO alumno = (AlumnoDTO) session.getAttribute("alumno");
+								<%AlumnoDTO alumno = (AlumnoDTO) request.getAttribute("alumno");
 								if(alumno != null){ %>
 									<tr>
 										<th><%=alumno.getNroDocumento() %></th>
@@ -89,7 +88,8 @@
 			  		         </table>
             			</div> <!-- de la tabla -->
 						<div class="bottom-buttons">
-		        			<!-- ACA IRIA LA MISMA QUE EN AgregarAlumnoCurso2 -->
+							<!-- SI LA LINEA DE ABAJO NO ESTA ENTONCES ANDA -->
+		        			<a class="bottom-table-link" href="/EducATe_-_FrontEnd/ServletAgregarAlumnoCurso?nroCurso=<%=nroCurso%>&idAlumno=<%=alumno.getId()%>">Agregar alumno al curso</a>
 						</div>
 					</section>
 				</div>

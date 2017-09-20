@@ -47,6 +47,7 @@ public class ServletBuscarAlumno extends HttpServlet {
 			//TODO - ACA ROMPE
 			String tipoDocumento = request.getParameter("tipoDocumento");
 			int nroDocumento = Integer.parseInt(request.getParameter("nroDocumento"));
+			int nroCurso = Integer.parseInt(request.getParameter("nroCurso"));
 			
 			System.out.println("tipo: "+tipoDocumento);
 			System.out.println("nro: "+nroDocumento);
@@ -57,7 +58,9 @@ public class ServletBuscarAlumno extends HttpServlet {
 			System.out.println("documentoAlumno: "+alumno.getNroDocumento());
 			
 			request.setAttribute("alumno", alumno);
-			request.getRequestDispatcher("/jsp/agregarAlumnoCurso.jsp").forward(request, response);
+			request.setAttribute("nroCurso", nroCurso);
+
+			request.getRequestDispatcher("/jsp/agregarAlumnoCurso2.jsp").forward(request, response);
 			
 		} catch(Exception e){
 			e.printStackTrace();
