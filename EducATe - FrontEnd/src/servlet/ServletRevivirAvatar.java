@@ -12,42 +12,27 @@ import javax.servlet.http.HttpSession;
 import rmi.RmiClient;
 import dto.AlumnoDTO;
 
-@WebServlet("/ServletElegirJuegoConTema")
-public class ServletElegirJuegoConTema extends HttpServlet {
+@WebServlet("/ServletRevivirAvatar")
+public class ServletRevivirAvatar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public ServletElegirJuegoConTema() {
+    public ServletRevivirAvatar() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request,response);
+		doPost(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			System.out.println("Llegue al ServletElegirJuegoConTema");
+			System.out.println("Llegue al ServletRevivirAvatar");
 			HttpSession sesion = request.getSession();
 			AlumnoDTO user = (AlumnoDTO) sesion.getAttribute("currentSessionUser");
 			
-			int nroTema = Integer.parseInt(request.getParameter("nroTema"));
+			RmiClient.getInstance().alumnoRevivirAvatar(user.getId());
 			
-			int nroJuego = RmiClient.getInstance().elegirJuegoConTema(user.getId(),nroTema);
-			
-			switch (nroJuego){
-			case 1:
-				response.sendRedirect("/EducATe_-_FrontEnd/juegos/divisionPolitica1/index.html");
-				break;
-			case 2:
-				response.sendRedirect("/EducATe_-_FrontEnd/juegos/condicionesNaturales1/index.html");
-				break;
-			case 3:
-				response.sendRedirect("/EducATe_-_FrontEnd/juegos/areasProtegidas1/index.html");
-				break;
-			case 4:
-				response.sendRedirect("/EducATe_-_FrontEnd/juegos/problemasAmbientales1/index.html");
-				break;	
-			}
+			request.getRequestDispatcher("/ServletListarAlimentos").forward(request, response);
 			
 		} catch (Exception e) {
 			System.out.println(e);

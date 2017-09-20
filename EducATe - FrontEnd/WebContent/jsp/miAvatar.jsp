@@ -131,8 +131,8 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
             			</div> <!-- de la tabla -->
 					</div> <!-- del container -->
 					<div class="bottom-buttons-miAvatar">
-						<button type="button">Evolucionar</button>
-						<button type="button">Revivir</button>
+						<a href="/EducATe_-_FrontEnd/ServletEvolucionarAvatar">Evolucionar</a>
+						<a href="/EducATe_-_FrontEnd/ServletRevivirAvatar">Revivir</a>
 					</div>
     		</div> <!-- del wrapper -->
 

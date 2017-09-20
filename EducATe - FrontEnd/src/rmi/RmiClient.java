@@ -214,4 +214,24 @@ public class RmiClient {
 		}
 		return 0;
 	}
+
+	public void alumnoEvolucionarAvatar(int nroAlumno) {
+		try{
+			Rmi.alumnoEvolucionarAvatar(nroAlumno);
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+		return;
+	}
+
+	public void alumnoRevivirAvatar(int nroAlumno) {
+		try{
+			Rmi.alumnoRevivirAvatar(nroAlumno);
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+		return;
+	}
 }
