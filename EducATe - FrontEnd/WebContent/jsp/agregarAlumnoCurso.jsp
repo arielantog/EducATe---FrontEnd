@@ -7,12 +7,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <%DocenteDTO user = (DocenteDTO) session.getAttribute("currentSessionUser");%>
-<%CursoDTO curso = (CursoDTO) request.getAttribute("curso"); %>
+<%int nroCurso =Integer.parseInt(request.getParameter("nroCurso"));%>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title><%=curso.getDescripcion() %></title>
+		<title>Agregar alumno al curso</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Home Alumnos</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -43,12 +42,30 @@
 				
 					<section id="main" class="wrapper">
 	            		<div class="inner">
-							<h1 class="major"><%=curso.getDescripcion() %></h1>
+							<h1 class="major">Agregar alumno al curso</h1>
 						</div>
 					</section>
+					<form  method="POST" action="/EducATe_-_FrontEnd/ServletBuscarAlumno" id="buscarForm">
+					<section class="buscar-alumno">
+						<!-- Inicio Tipo de Documento -->
+						<!-- <label for="tipoDocumento">Tipo de documento</label> -->
+						<select class="filtro-busqueda-alumno" id="tipoDocumento" name="tipoDocumento">
+							<option value="" selected="selected">- Tipo de documento -</option>
+							<option value="DNI">DNI</option>
+							<option value="Pasaporte">Pasaporte</option>
+							<option value="CarnetExtrnajero">Carnet Ext.</option>
+							<option value="Ruc">RUC</option>
+							<option value="PartidaNacimiento">P. Nac</option>
+						</select>
+						<!-- Fin Tipo de Documento -->
+						<input class="filtro-busqueda-alumno" name="nroDocumento" type="text" value="" placeholder="Numero de documento">
+						<!--   <i aria-hidden="true" class="fa fa-search fa-2x"></i> -->
+						<a class="fa fa-search fa-2x lupa-button" aria-hidden="true" onclick="document.getElementById('buscarForm').submit()"></a>
+					</section>
+					</form>
 					<section class="lista-button">
-						<h3 class="table-title">Alumnos</h3>
-						<div class="lista-alumnos-curso">
+						<h3 class="table-title">Resultados</h3>
+						<div class="resultado-buscar-alumno ">
              	 			<table border="1" cellpading="0" cellspacing="0">
 								<tr>
 									<th>DNI</th>
@@ -56,21 +73,21 @@
 									<th>Nombre</th>
 									<th>Usuario</th>
 								</tr>
+								<%AlumnoDTO alumno = (AlumnoDTO) session.getAttribute("alumno");
+								if(alumno != null){ %>
+									<tr>
+										<th><%=alumno.getNroDocumento() %></th>
+										<th><%=alumno.getApellido() %></th>
+										<th><%=alumno.getNombre() %></th>
+										<th><%=alumno.getUsuario() %></th>
+									</tr>
+								<% }%>
 								
-								<%List<AlumnoDTO> alumnos = curso.getAlumnos(); 
-								for(AlumnoDTO alumno : alumnos){%>
-								<tr>
-				  		        	<td><%=alumno.getNroDocumento() %></td>
-				  		            <td><%=alumno.getApellido() %></td>
-				  		            <td><%=alumno.getNombre() %></td>
-				  		            <td><%=alumno.getUsuario() %></td>
-				  		        </tr>
-				  		        <%}%>
 			  		          	
 			  		         </table>
             			</div> <!-- de la tabla -->
 						<div class="bottom-buttons">
-		        			<a class="bottom-table-link" href="/EducATe_-_FrontEnd/jsp/agregarAlumnoCurso.jsp?nroCurso=<%=curso.getId()%>">Agregar alumno</a>
+		        			<a class="bottom-table-link" href="/EducATe_-_FrontEnd/ServletAgregarAlumnoCurso?nroCurso=<%=nroCurso%>&idAlumno=<%=alumno.getId()%>">Agregar alumno al curso</a>
 						</div>
 					</section>
 				</div>

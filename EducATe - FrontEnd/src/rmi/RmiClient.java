@@ -234,4 +234,24 @@ public class RmiClient {
 		}
 		return;
 	}
+
+	public AlumnoDTO buscarAlumnoAsignarCurso(String tipoDocumento, int nroDocumento) {
+		try{
+			Rmi.buscarAlumnoAsignarCurso(tipoDocumento, nroDocumento);
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public int cursoAgregarAlumno(int nroDocente, int nroCurso, int nroAlumno) {
+		try{
+			Rmi.cursoAgregarAlumno(nroDocente, nroCurso, nroAlumno);
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }

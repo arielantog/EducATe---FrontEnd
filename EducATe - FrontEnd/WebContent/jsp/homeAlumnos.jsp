@@ -72,7 +72,7 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 				 		  <% } %>
 					    </table>
 						<div class="bottom-buttons">
-		        			<a href="ServletElegirJuegoSinTema" class="button submit home-docentes-buttons">Reforzar nivel recomendado</a>
+		        			<a href="ServletElegirJuegoSinTema" class="button submit home-alumnos-buttons">Reforzar nivel recomendado</a>
 						</div>
 					</section>
 			</div>
