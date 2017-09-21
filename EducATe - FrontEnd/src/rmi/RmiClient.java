@@ -245,13 +245,13 @@ public class RmiClient {
 		return null;
 	}
 
-	public int cursoAgregarAlumno(int nroDocente, int nroCurso, int nroAlumno) {
+	public CursoDTO cursoAgregarAlumno(int nroDocente, int nroCurso, int nroAlumno) {
 		try{
 			return Rmi.cursoAgregarAlumno(nroDocente, nroCurso, nroAlumno);
 		}
 		catch (Exception e){
 			e.printStackTrace();
 		}
-		return 0;
+		return null;
 	}
 }

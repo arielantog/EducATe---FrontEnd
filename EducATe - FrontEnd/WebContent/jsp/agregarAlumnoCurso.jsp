@@ -60,7 +60,7 @@
 						</select>
 						<!-- Fin Tipo de Documento -->
 						<input class="filtro-busqueda-alumno" name="nroDocumento" type="text" value="" placeholder="Numero de documento">
-						<input type="hidden" value="<%=nroCurso%>">
+						<input type="hidden" name=nroCurso value="<%=nroCurso%>">
 						<!--   <i aria-hidden="true" class="fa fa-search fa-2x"></i> -->
 						<a class="fa fa-search fa-2x lupa-button" aria-hidden="true" onclick="document.getElementById('buscarForm').submit()"></a>
 					</section>
