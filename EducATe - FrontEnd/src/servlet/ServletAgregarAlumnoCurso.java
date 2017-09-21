@@ -30,8 +30,7 @@ public class ServletAgregarAlumnoCurso extends HttpServlet {
 			int nroCurso = Integer.parseInt(request.getParameter("nroCurso"));
 			int idAlumno = Integer.parseInt(request.getParameter("idAlumno"));
 			CursoDTO curso = RmiClient.getInstance().cursoAgregarAlumno(user.getId(), nroCurso, idAlumno);
-			
-			//FIXME Fijarse que al seleccionar cualquier curso, trae siempre los alumnos del primer curso 
+			 
 			request.setAttribute("curso", curso);
 			
 			request.getRequestDispatcher("/jsp/mostrarCurso.jsp").forward(request, response);

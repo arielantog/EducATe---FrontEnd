@@ -25,7 +25,6 @@ public class ServletMostrarCurso extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//id=req.getParameter("id");
 		try {
 			System.out.println("Llegue a ServletMostrarCurso");
 			HttpSession sesion = request.getSession();
