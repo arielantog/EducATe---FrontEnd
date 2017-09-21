@@ -51,7 +51,8 @@
 						<div class="lista-alumnos-curso">
              	 			<table border="1" cellpading="0" cellspacing="0">
 								<tr>
-									<th>DNI</th>
+									<th>Tipo de doc.</th>
+									<th>Nro de doc.</th>
 									<th>Apellido</th>
 									<th>Nombre</th>
 									<th>Usuario</th>
@@ -60,6 +61,7 @@
 								<%List<AlumnoDTO> alumnos = curso.getAlumnos(); 
 								for(AlumnoDTO alumno : alumnos){%>
 								<tr>
+									<td><%=alumno.getTipoDocumento() %></td>
 				  		        	<td><%=alumno.getNroDocumento() %></td>
 				  		            <td><%=alumno.getApellido() %></td>
 				  		            <td><%=alumno.getNombre() %></td>
