@@ -12,31 +12,35 @@ import javax.servlet.http.HttpSession;
 import rmi.RmiClient;
 import dto.AlumnoDTO;
 
-@WebServlet("/ServletRevivirAvatar")
-public class ServletRevivirAvatar extends HttpServlet {
+@WebServlet("/ServletAlimentarAvatar")
+public class ServletAlimentarAvatar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public ServletRevivirAvatar() {
+    public ServletAlimentarAvatar() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			System.out.println("Llegue al ServletRevivirAvatar");
+			System.out.println("Llegue a ServletAlimentarAvatar");
 			HttpSession sesion = request.getSession();
 			AlumnoDTO user = (AlumnoDTO) sesion.getAttribute("currentSessionUser");
-			
-			user = RmiClient.getInstance().alumnoRevivirAvatar(user.getId());
+
+			int nroAlumno = user.getId();
+			int nroAlimento = Integer.parseInt(request.getParameter("nroAlimento"));
+						
+			user = RmiClient.getInstance().alumnoAlimentarAvatar(nroAlumno, nroAlimento);
 			sesion.setAttribute("currentSessionUser",user);
 			request.getRequestDispatcher("/ServletListarAlimentos").forward(request, response);
 			
-		} catch (Exception e) {
-			System.out.println(e);
+		} catch(Exception e){
+			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
 	}
 
 }

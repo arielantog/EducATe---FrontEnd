@@ -130,9 +130,9 @@ public class RmiClient {
 		return null;
 	}
 
-	public List<AlimentoDTO> listarAlimentos() throws RemoteException{
+	public List<AlimentoDTO> listarAlimentos(int nroTipoAvatar) throws RemoteException{
 		try {
-			return Rmi.listarAlimentos();
+			return Rmi.listarAlimentos(nroTipoAvatar);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -215,24 +215,24 @@ public class RmiClient {
 		return 0;
 	}
 
-	public void alumnoEvolucionarAvatar(int nroAlumno) {
+	public AlumnoDTO alumnoEvolucionarAvatar(int nroAlumno) {
 		try{
-			Rmi.alumnoEvolucionarAvatar(nroAlumno);
+			return Rmi.alumnoEvolucionarAvatar(nroAlumno);
 		}
 		catch (Exception e){
 			e.printStackTrace();
 		}
-		return;
+		return null;
 	}
 
-	public void alumnoRevivirAvatar(int nroAlumno) {
+	public AlumnoDTO alumnoRevivirAvatar(int nroAlumno) {
 		try{
-			Rmi.alumnoRevivirAvatar(nroAlumno);
+			return Rmi.alumnoRevivirAvatar(nroAlumno);
 		}
 		catch (Exception e){
 			e.printStackTrace();
 		}
-		return;
+		return null;
 	}
 
 	public AlumnoDTO buscarAlumnoAsignarCurso(String tipoDocumento, int nroDocumento) {
@@ -248,6 +248,16 @@ public class RmiClient {
 	public CursoDTO cursoAgregarAlumno(int nroDocente, int nroCurso, int nroAlumno) {
 		try{
 			return Rmi.cursoAgregarAlumno(nroDocente, nroCurso, nroAlumno);
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public AlumnoDTO alumnoAlimentarAvatar(int nroAlumno, int nroAlimento) {
+		try{
+			return Rmi.alumnoAlimentarAvatar(nroAlumno, nroAlimento);
 		}
 		catch (Exception e){
 			e.printStackTrace();
