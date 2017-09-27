@@ -13,10 +13,12 @@
 		<title>Home Alumnos</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/EducATe_-_FrontEnd/assets/css/bootstrap.css">
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="/EducATe_-_FrontEnd/assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	   
 	</head>
 	<body>
 
@@ -58,18 +60,49 @@
 				 		  <% } else {%><tr><td>Sin cursos</td></tr> <%}%>
 					    </table>
 						<div class="bottom-buttons">
-		        			<a class="bottom-table-link" href="#">Nuevo curso</a>
+		        			<a class="bottom-table-link"  data-toggle="modal" data-target="#myModal">Nuevo curso</a>
 						</div>
 					</section>
+					
+					<!-- Modal -->
+					
+					  <div class="modal fade" id="myModal" role="dialog">
+					    <div class="modal-dialog">
+					    
+					      <!-- Modal content-->
+					      <div class="modal-content">
+					        <div class="modal-header modal-header-docente">
+					        	<h4 class="modal-title">Agregar un nuevo curso</h4>
+					        	<button type="button" class="close modal-close-button" data-dismiss="modal">&times;</button>
+					        </div>
+					        <div class="modal-body modal-body-docente">
+						        <form method="POST" id="nuevoCursoForm" action="/EducATe_-_FrontEnd/ServletDocenteAgregarCurso">
+						            <p>Nombre del curso:</p>
+									<input name="nombreCurso" id="nombreCurso" type="text">
+								</form>
+					        </div>
+					        <div class="modal-foote modal-footer-docente">
+        						<button type="button" class="button modal-button" data-dismiss="modal">Cerrar</button>
+        						<button type="submit" form="nuevoCursoForm" class="button modal-button">Guardar</button>
+					        </div>
+					      </div>
+					       
+					    </div>
+					  </div>
+					
+					  
+				
+					
 			</div>
 			
-		<footer id="footer" class="wrapper style1-alt">
-			<div class="inner">
-				<ul class="menu">
-					<li>&copy; Amado Selene - Antognini.</li>
-				</ul>
-			</div>
-		</footer>
+		<!-- Footer -->
+			<footer id="footer" class="wrapper style1-alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Amado Selene - Antognini.</li>
+					</ul>
+				</div>
+			</footer>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
@@ -79,6 +112,8 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+			
+    		<script src="/EducATe_-_FrontEnd/assets/js/bootstrap.js"></script>
 
 	</body>
 </html>

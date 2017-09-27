@@ -4050,9 +4050,9 @@
 	}
 	
 
-	.bottom-table-link {
-		/*float: right;*/
-    	/*margin-right: 8em;*/
+	.bottom-table-link:hover {
+		text-decoration: none;
+		cursor: pointer;
 	}
 
 	.lista-alumnos-curso {
@@ -4073,9 +4073,6 @@
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
-		/*
-		justify-content: space-between;
-		*/
 	}
 	
 	.filtro-busqueda-alumno {
@@ -4102,5 +4099,37 @@
 	    color: #fff !important;
 		color: #37c0fb;
 		border-bottom-color: transparent !important;
+	}
+	
+	.modal-header-docente {
+		background-color: #b74e91;
+		height: 90px;
+		/*display: flex;*/
+		/*justify-content: center;*/
+		border-color: #b74e91;
+		border-radius: 6px 6px 0 0;
+	}
+	
+	.modal-body-docente {
+		background-color: #493382;
+		height: 200px;
+	}
+	
+	.modal-footer-docente {
+		background-color: #b74e91;
+		display: flex;
+		align-items: center;
+		justify-content: right;
+		height: 100px;
+		border-radius: 0 0 6px 6px;
+	}
+	
+	.modal-button {
+		margin: 12px;
+	}
+	
+	.modal-close-button {
+		height: 21px;
+		margin-top: -23px !important;
 	}
 	
