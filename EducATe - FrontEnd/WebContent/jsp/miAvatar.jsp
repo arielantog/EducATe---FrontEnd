@@ -3,6 +3,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="dto.AlimentoDTO" %>
 <%@ page import="dto.AlumnoDTO" %>
+<%@ page import="dto.AvatarDTO" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <%
@@ -29,10 +30,6 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 						<li><a href="/EducATe_-_FrontEnd/ServletListarTemas">Home Alumnos</a></li>
 						<li><a href="/EducATe_-_FrontEnd/jsp/perfilAlumno.jsp">Mi Perfil</a></li>
 						<li><a href="#">Puntos: <%=user.getPuntos()%></a></li>
-						<!-- <%//if(request.getAttribute("alumno") != null){
-							//AlumnoDTO alumno = (AlumnoDTO)request.getAttribute("alumno");
-
-						%> -->
 						<li><a href="#"><%=user.getNombre() %></a></li>
 						<%} %>
 					</ul>
@@ -52,7 +49,13 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 					<h3 class="table-title" id="conImagen">Alimentos</h3>
 			        <div class="container">
 			      		<div class="avatar-principal">
-			            	<img class="avatar-principal" src="images/avatar.png" alt="">
+			      			<%if(request.getAttribute("avatar") != null){
+			      					AvatarDTO avatar = (AvatarDTO)request.getAttribute("avatar");
+			      			%>
+			      			<p><%=avatar.getHambre()%>/<%=avatar.getTipoAvatar().getAlimentoMax()%></p>
+			      			<progress max=<%=avatar.getTipoAvatar().getAlimentoMax()%> value=<%=avatar.getHambre()%>></progress>
+			            	<img class="avatar-principal" src="<%=avatar.getTipoAvatar().getUrl()%>" alt="">
+			            	<% } %>
 			            </div>
             			<div class="alimentos-miAvatar">
               				<table class="table-alimentos-miAvatar" border="1" cellpading="0" cellspacing="0">
@@ -62,7 +65,7 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 									<th>Nombre*</th>
 									<th>Proteinas</th>
 									<th>Precio</th>
-									<th>Cantidad</th>
+									<th>Alimentar</th>
 								</tr>
 								<%if(request.getAttribute("alimentos") != null){
 			          				List<AlimentoDTO> alimentos = (List<AlimentoDTO>)request.getAttribute("alimentos");
@@ -75,64 +78,20 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 				  		            <td><%=a.getNombre() %></td>
 				  		            <td><%=a.getProteinas() %></td>
 				  		            <td><%=a.getPrecio() %></td>
-				  		            <td><input type="text" name="cantidad_1" value=""></td>
+				  		            <td><a href="/EducATe_-_FrontEnd/ServletAlimentarAvatar?nroAlimento=<%=a.getId()%>">Comprar</a></td>
 				  		            	<%} %>
 				  		            <%} %>
 				  		       	</tr>
-				  		       	<!-- 
-			  		          	<tr>
-			                  		<td>Imagen 2</td>
-			  		            	<td>Alimento 2</td>
-			  		            	<td><input type="text" name="cantidad_2" value=""></td>
-			  		          	</tr>
-  		          				<tr>
-                  					<td>Imagen 3</td>
-				  		            <td>Alimento 3</td>
-				  		            <td><input type="text" name="cantidad_3" value=""></td>
-				  		       	</tr>
-			  		          	<tr>
-			                  		<td>Imagen 4</td>
-			  		           		<td>Alimento 4</td>
-			  		            	<td><input type="text" name="cantidad_4" value=""></td>
-			  		          	</tr>
-								<tr>
-                  					<td>Imagen 5</td>
-  		            				<td>Alimento 5</td>
-  		            				<td><input type="text" name="cantidad_5" value=""></td>
-  		          				</tr>
-								<tr>
-                  					<td>Imagen 6</td>
-  		            				<td>Alimento 6</td>
-  		            				<td><input type="text" name="cantidad_6" value=""></td>
-  		          				</tr>
-								<tr>
-                  					<td>Imagen 7</td>
-  		            				<td>Alimento 7</td>
-  		           					<td><input type="text" name="cantidad_7" value=""></td>
-  		          				</tr>
-								<tr>
-                  					<td>Imagen 8</td>
-  		           					<td>Alimento 8</td>
-  		           				 	<td><input type="text" name="cantidad_8" value=""></td>
-  		          				</tr>
-								<tr>
-                  					<td>Imagen 9</td>
-  		            				<td>Alimento 9</td>
-  		            				<td><input type="text" name="cantidad_9" value=""></td>
-  		          				</tr>
-								<tr>
-                  					<td>Imagen 10</td>
-  		            				<td>Alimento 10</td>
-  		            				<td><input type="text" name="cantidad_10" value=""></td>
-  		          				</tr>
-  		          				 -->
   		        			</table>
-							<button class="bottom-buttons" type="button">Alimentar</button>
             			</div> <!-- de la tabla -->
 					</div> <!-- del container -->
 					<div class="bottom-buttons-miAvatar">
-						<a href="/EducATe_-_FrontEnd/ServletEvolucionarAvatar">Evolucionar</a>
-						<a href="/EducATe_-_FrontEnd/ServletRevivirAvatar">Revivir</a>
+						<%if(request.getAttribute("avatar") != null){
+			      					AvatarDTO avatar = (AvatarDTO)request.getAttribute("avatar");
+			      			%>
+						<a href="/EducATe_-_FrontEnd/ServletEvolucionarAvatar">Evolucionar (<%=avatar.getTipoAvatar().getPrecioEvolucion() %>)</a>
+						<a href="/EducATe_-_FrontEnd/ServletRevivirAvatar">Revivir (<%=avatar.getTipoAvatar().getPrecioRevivir() %>)</a>
+						<% } %>
 					</div>
     		</div> <!-- del wrapper -->
 

@@ -30,8 +30,8 @@ public class ServletEvolucionarAvatar extends HttpServlet {
 			HttpSession sesion = request.getSession();
 			AlumnoDTO user = (AlumnoDTO) sesion.getAttribute("currentSessionUser");
 			
-			RmiClient.getInstance().alumnoEvolucionarAvatar(user.getId());
-			
+			user = RmiClient.getInstance().alumnoEvolucionarAvatar(user.getId());
+			sesion.setAttribute("currentSessionUser",user);
 			request.getRequestDispatcher("/ServletListarAlimentos").forward(request, response);
 			
 		} catch (Exception e) {
