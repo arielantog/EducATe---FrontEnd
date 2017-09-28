@@ -1,4 +1,8 @@
-<!DOCTYPE HTML>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.*" %>
+<%@ page import="dto.ErrorDTO" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<title>EducATe</title>
@@ -32,8 +36,7 @@
 					<section id="intro" class="wrapper style1 fullscreen fade-up">
 						<div class="inner">
 							<h1>EducATe</h1>
-							<p>Bienvenido a la plataforma educativa para cuarto grado. <br />
-							[escribir descripcion] </p>
+							<p>Bienvenido a la plataforma educativa para cuarto grado.</p>
 							<ul class="actions">
 								<li><a href="#alumnos" class="button scrolly">A jugar!</a></li>
 							</ul>
@@ -44,20 +47,24 @@
 					<section id="alumnos" class="wrapper style2 fullscreen">
 						<div class="inner">
 							<h2>Alumnos</h2>
-							<p>Si sos un alumno pon√© tu usuario y contrase√±a y EducATe.</p>
+							<p>Si sos un alumno, ingres· tu usuario y contraseÒa y EducATe.</p>
 							<div class="split style1">
 								<section>
 									<form id="loginFormAlumno" action="ServletLoginAlumno" method="POST">
 										<div class="field half first">
 										
-											
 										
 											<label style="margin-top: 50px;" for="alumno">Usuario</label>
 											<input type="text" name="alumno" id="alumno" />
-											<label style="margin-top: 50px;" for="passAlumno">Contrase√±a</label>
+											<label style="margin-top: 50px;" for="passAlumno">ContraseÒa</label>
 											<input type="password" name="passAlumno" id="passAlumno" />
+											<%if (request.getAttribute("error") != null){ 
+												ErrorDTO error = (ErrorDTO)request.getAttribute("error");
+											%>
+											<label class="err-login"><%=error.getMensaje() %></label>
+											<%} %>
 											<ul class="actions">
-												<li><a href="" value="Login" id="login" class="button submit" style="margin-top: 100px">Iniciar Sesi√≥n</a></li>
+												<li><a href="" value="Login" id="login" class="button submit" style="margin-top: 100px">Iniciar SesiÛn</a></li>
 											</ul>
 										</div>
 										<div class="field half">
@@ -68,9 +75,9 @@
 								<section>
 									<ul class="contact">
 										<li>
-											<h3>No ten√©s usuario?</h3> 
-											<span>Registrate!! Es muy f√°cil<br />
-											Solo hace click en el bot√≥n de abajo</span>
+											<h3>No tenÈs usuario?</h3> 
+											<span>Registrate!! Es muy f·cil<br />
+											Solo hace click en el botÛn de abajo</span>
 										</li>
 										<li>
 											<ul class="actions">
@@ -87,7 +94,7 @@
 					<section id="docentes" class="wrapper style3 fullscreen">
 						<div class="inner">
 							<h2>Docentes</h2>
-							<p>Si sos un docente pon√© tu usuario y contrase√±a y manten√© el seguimiento de tus alumnos.</p>
+							<p>Si sos un docente, ingres· tu usuario y contraseÒa y realiz· un seguimiento de tus alumnos.</p>
 							<div class="split style1">
 								<section>
 									<form action="ServletLogin" method="POST">
@@ -103,12 +110,12 @@
 												<option value="PartidaNacimiento">P. Nac</option>
 											</select>
 											<!-- Fin Tipo de Documento -->
-											<label for="nroDocumento" style="margin-top: 50px;" >N√∫mero de documento</label>
+											<label for="nroDocumento" style="margin-top: 50px;" >N˙mero de documento</label>
 											<input type="text" name="nroDocumento" id="nroDocumento" />
-											<label style="margin-top: 50px;" for="passDocente">Contrase√±a</label>
+											<label style="margin-top: 50px;" for="passDocente">ContraseÒa</label>
 											<input type="password" name="passDocente" id="passDocente" />
 											<ul class="actions">
-												<li><a type="submit" class="button submit" style="margin-top: 100px;">Iniciar Sesi√≥n</a></li>
+												<li><a type="submit" class="button submit" style="margin-top: 100px;">Iniciar SesiÛn</a></li>
 											</ul>
 										</div>
 										<div class="field half">
@@ -119,9 +126,9 @@
 								<section>
 									<ul class="contact">
 										<li>
-											<h3>No ten√©s usuario?</h3> 
-											<span>Registrate!! Es muy f√°cil<br />
-											Solo hace click en el bot√≥n de abajo</span>
+											<h3>No tenÈs usuario?</h3> 
+											<span>Registrate!! Es muy f·cil<br />
+											Solo hace click en el botÛn de abajo</span>
 										</li>
 										<li>
 											<ul class="actions">
@@ -162,9 +169,9 @@
 								<section>
 									<ul class="contact">
 										<li>
-											<h3>Direcci√≥n</h3>
+											<h3>DirecciÛn</h3>
 											<span>Calle s/n<br />
-											Ciudad Aut√≥noma de Buenos Aires<br />
+											Ciudad AutÛnoma de Buenos Aires<br />
 											Argentina</span>
 										</li>
 										<li>
@@ -201,7 +208,7 @@
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
 
-<!--  		<script>  -->
+<!--  		<script>  
 //  			$('#loginFormAlumno').on('submit', function(event) {
 //  				event.preventDefault();
 //  				console.log("Fired");

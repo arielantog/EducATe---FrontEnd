@@ -26,7 +26,7 @@ DocenteDTO user = (DocenteDTO) session.getAttribute("currentSessionUser");
 
 		<!-- Header -->
 			<header id="header">
-				<a href="/EducATe_-_FrontEnd/index.html" class="title">EducATe</a>
+				<a href="/EducATe_-_FrontEnd/index.jsp" class="title">EducATe</a>
 				<nav>
 					<ul>
 						<%if(user != null){%>

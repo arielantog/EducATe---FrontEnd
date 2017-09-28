@@ -6,12 +6,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <%
-//HttpSession objSesion = request.getSession(true); 
-//String user = request.getParameter("usuario"); //aqui tu identificador de usuario
+
 //Obtengo el usuario logeado
 AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
-//objSesion.setAttribute("usuario", user );
-//out.println("Poniendo usuario en sesion ...");
+
 %>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -27,7 +25,7 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 
 		<!-- Header -->
 			<header id="header">
-				<a href="/EducATe_-_FrontEnd/index.html" class="title">EducATe</a>
+				<a href="/EducATe_-_FrontEnd/index.jsp" class="title">EducATe</a>
 				<nav>
 					<ul>
 						<%if(user != null){%>
