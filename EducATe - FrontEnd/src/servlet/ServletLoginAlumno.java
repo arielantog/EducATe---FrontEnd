@@ -31,6 +31,8 @@ public class ServletLoginAlumno extends HttpServlet {
 			HttpSession sesion = request.getSession(true);
 			String usuario = request.getParameter("alumno");
 			String password = request.getParameter("passAlumno");
+			System.out.println(request);
+			System.out.println(usuario+password);
 			AlumnoDTO alumno = RmiClient.getInstance().loginAlumno(usuario,password);
 			if(alumno != null){
 				System.out.println("login exitoso");
@@ -42,8 +44,15 @@ public class ServletLoginAlumno extends HttpServlet {
 			}
 			else{
 				System.out.println("login incorrecto");
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.html");
+				
+				sesion.setAttribute("currentSessionUser",alumno);
+				//request.setAttribute("alumno", alumno);
+				//String err = "errorA";
+				int err = 1;
+				request.setAttribute("err", err);
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/index.jsp");
 				dispatcher.forward(request, response);
+				
 			}
 			
 		}

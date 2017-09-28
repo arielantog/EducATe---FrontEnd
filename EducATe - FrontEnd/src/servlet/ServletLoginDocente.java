@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,8 +44,17 @@ public class ServletLoginDocente extends HttpServlet {
 							
 			}
 			else{
+				//System.out.println("login incorrecto");
+				//request.getRequestDispatcher("/index.html").forward(request, response);
+				
 				System.out.println("login incorrecto");
-				request.getRequestDispatcher("/index.html").forward(request, response);
+				sesion.setAttribute("currentSessionUser",docente);
+				//String err = "errorD";
+				int err = 2;
+				request.setAttribute("err", err);
+				request.getRequestDispatcher("/jsp/index.jsp").forward(request, response);;
+				//RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/index.jsp");
+				
 			}
 		}
 		catch(Exception e)
