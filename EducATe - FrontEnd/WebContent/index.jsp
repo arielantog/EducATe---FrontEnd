@@ -58,11 +58,12 @@
 											<input type="text" name="alumno" id="alumno" />
 											<label style="margin-top: 50px;" for="passAlumno">Contraseña</label>
 											<input type="password" name="passAlumno" id="passAlumno" />
-											<%if (request.getAttribute("error") != null){ 
+											<%if (request.getAttribute("error") != null ){ 
 												ErrorDTO error = (ErrorDTO)request.getAttribute("error");
+												if (error.getCodigo() == 1){
 											%>
 											<label class="err-login"><%=error.getMensaje() %></label>
-											<%} %>
+											<%}} %>
 											<ul class="actions">
 												<li><a href="" value="Login" id="login" class="button submit" style="margin-top: 100px">Iniciar Sesión</a></li>
 											</ul>
@@ -114,6 +115,12 @@
 											<input type="text" name="nroDocumento" id="nroDocumento" />
 											<label style="margin-top: 50px;" for="passDocente">Contraseña</label>
 											<input type="password" name="passDocente" id="passDocente" />
+											<%if (request.getAttribute("error") != null ){ 
+												ErrorDTO error = (ErrorDTO)request.getAttribute("error");
+												if (error.getCodigo() == 2){
+											%>
+											<label class="err-login"><%=error.getMensaje() %></label>
+											<%}} %>
 											<ul class="actions">
 												<li><a type="submit" class="button submit" style="margin-top: 100px;">Iniciar Sesión</a></li>
 											</ul>

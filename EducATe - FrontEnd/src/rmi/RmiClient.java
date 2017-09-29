@@ -56,42 +56,13 @@ public class RmiClient {
 		}
 		return null;
 	}
-/*
-	public int loginDocente(String tipoDocumento, int nroDocumento, String password) throws RemoteException{
-		try {
-			return Rmi.loginDocente(tipoDocumento, nroDocumento, password);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return 0;
-	}
-*/
-	public DocenteDTO loginDocente(String tipoDocumento, int nroDocumento, String password) throws RemoteException{
-		try {
-			return Rmi.loginDocente(tipoDocumento, nroDocumento, password);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-/*
-	public DocenteDTO traerDocente(int idDocente) throws RemoteException {
-		try {
-			return Rmi.traerDocente(idDocente);
-		} catch (RemoteException e){
-			e.printStackTrace();
-		}
-		return null;
-	}
-*/
 
-	public AlumnoDTO loginAlumno(String usuario, String password) {
-		try {
-			return Rmi.loginAlumno(usuario, password);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public DocenteDTO loginDocente(String tipoDocumento, int nroDocumento, String password) throws RemoteException{
+		return Rmi.loginDocente(tipoDocumento, nroDocumento, password);
+	}
+
+	public AlumnoDTO loginAlumno(String usuario, String password) throws RemoteException{
+		return Rmi.loginAlumno(usuario, password);
 	}	
 	
 	public int alumnoBuscarLeccion(int alumno, int juego) throws RemoteException{

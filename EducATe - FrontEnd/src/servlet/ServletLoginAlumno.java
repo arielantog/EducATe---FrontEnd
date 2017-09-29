@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,26 +33,21 @@ public class ServletLoginAlumno extends HttpServlet {
 			HttpSession sesion = request.getSession(true);
 			String usuario = request.getParameter("alumno");
 			String password = request.getParameter("passAlumno");
-			System.out.println(request);
-			System.out.println(usuario+password);
-			AlumnoDTO alumno = RmiClient.getInstance().loginAlumno(usuario,password);
-			if(alumno != null){
+			try{
+				AlumnoDTO alumno = RmiClient.getInstance().loginAlumno(usuario,password);
 				System.out.println("login exitoso");
 				//Guardo la sesion del usuario que se acaba de loguear
 				sesion.setAttribute("currentSessionUser",alumno);
 				ServletAlumnoActual.alumnoActual = alumno.getId();
 				request.setAttribute("alumno", alumno);
 				request.getRequestDispatcher("/ServletListarTemas").forward(request, response);
-			}
-			else{
+			}catch(RemoteException e){
 				System.out.println("login incorrecto");
 				
-				ErrorDTO error = new ErrorDTO();
-				error.setMensaje("Login incorrecto");
+				ErrorDTO error = new ErrorDTO(1,e.detail.getMessage());
 				
 				request.setAttribute("error", error);
 				request.getRequestDispatcher("/index.jsp").forward(request, response);
-				
 			}
 			
 		}
