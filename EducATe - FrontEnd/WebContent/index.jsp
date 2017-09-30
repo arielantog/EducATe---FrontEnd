@@ -82,7 +82,7 @@
 										</li>
 										<li>
 											<ul class="actions">
-											<li><a href="nuevoAlumno.html" class="button submit">Registrate</a></li>
+											<li><a href="nuevoAlumno.jsp" class="button submit">Registrate</a></li>
 										</ul>
 										</li>
 									</ul>

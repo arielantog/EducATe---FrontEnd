@@ -40,12 +40,7 @@ public class RmiClient {
 	}
 
 	public AlumnoDTO nuevoAlumno(String tipoDocumento, int nroDocumento, String nombre, String apellido, String usuario, String password, String mail) throws RemoteException{
-		try {
 			return Rmi.nuevoAlumno(tipoDocumento, nroDocumento, nombre, apellido, usuario, password, mail);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	public DocenteDTO nuevoDocente(String tipoDocumento, int nroDocumento, String nombre, String apellido, String password, String mail) throws RemoteException{

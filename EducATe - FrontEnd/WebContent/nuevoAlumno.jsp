@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.*" %>
+<%@ page import="dto.ErrorDTO" %>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -10,13 +14,20 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
 	<body>
-
+		<!-- Error Message -->
+		
+		<%if (request.getAttribute("error") != null ){ 
+			ErrorDTO error = (ErrorDTO)request.getAttribute("error");
+		%>									
+		<script>alert("<%=error.getMensaje()%>");</script>
+		<%} %>
+		
 		<!-- Header -->
 			<header id="header">
-				<a href="index.html" class="title">EducATe</a>
+				<a href="index.jsp" class="title">EducATe</a>
 				<nav>
 					<ul>
-						<li><a href="index.html">Home</a></li>
+						<li><a href="index.jsp">Home</a></li>
 						
 					</ul>
 				</nav>
@@ -42,7 +53,7 @@
 									<option value="PartidaNacimiento">P. Nac</option>
 								</select>
 								<!-- Fin Tipo de Documento -->
-								<label for="nroDocumento">NÃºmero de documento</label>
+								<label for="nroDocumento">Número de documento</label>
 								<input name="nroDocumento" type="text">
 								<label for="nombre">Nombre</label>
 								<input name="nombre" type="text">
@@ -50,9 +61,9 @@
 								<input name="apellido" type="text">
 								<label for="usuario">Nombre de Usuario</label>
 								<input name="usuario" type="text">
-								<label for="password">ContraseÃ±a</label>
+								<label for="password">Contraseña</label>
 								<input name="password" type="password">
-								<label for="repeatPassword">Repetir ContraseÃ±a</label>
+								<label for="repeatPassword">Repetir Contraseña</label>
 								<input name="repeatPassword" type="password">
 								<label for="mail">Email</label>
 								<input name="mail" type="email">
