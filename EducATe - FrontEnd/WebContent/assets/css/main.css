@@ -2010,6 +2010,7 @@
 		button:hover,
 		.button:hover {
 			border-color: rgba(255, 255, 255, 0.55) !important;
+			text-decoration: none;
 		}
 
 			input[type="submit"]:hover:after,
@@ -3434,6 +3435,7 @@
 
 						#header > nav > ul > li a:hover {
 							color: rgba(255, 255, 255, 0.55);
+							text-decoration: none;
 						}
 
 						#header > nav > ul > li a.active {
@@ -4139,3 +4141,35 @@
 	.err-login {
 		color: red;
 	}
+	
+	.close {
+		float: right;
+		font-size: 21px;
+		font-weight: bold;
+		line-height: 1;
+		color: #000;
+		text-shadow: 0 1px 0 #fff;
+		filter: alpha(opacity=20);
+		opacity: .2;
+	}
+	
+	.alert {
+		padding: 15px;
+		margin-bottom: 20px;
+		border: 1px solid transparent;
+	    border-top-color: transparent;
+	    border-right-color: transparent;
+	    border-bottom-color: transparent;
+	    border-left-color: transparent;
+		border-radius: 4px;
+	}
+	
+	.alert-danger {
+		color: #deb6cf;
+	   	background-color: #b74e91;
+	   	border-color: #b74e91;
+	   	height: 62px;
+	   	width: 800px;
+	   	margin: auto;
+	   	box-shadow: 5px 5px 11px #888;
+    }

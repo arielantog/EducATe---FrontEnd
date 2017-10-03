@@ -21,12 +21,6 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
 	<body>
-		<!-- Error Message -->
-		<%if (request.getAttribute("error") != null ){ 
-			ErrorDTO error = (ErrorDTO)request.getAttribute("error");
-		%>									
-		<script>alert("<%=error.getMensaje()%>");</script>
-		<%} %>
 
 		<!-- Header -->
 			<header id="header">
@@ -45,6 +39,16 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 
 		<!-- Wrapper -->
 			<div id="wrapper">
+			
+			<!-- Error Message -->
+				<%if (request.getAttribute("error") != null ){ 
+					ErrorDTO error = (ErrorDTO)request.getAttribute("error");
+				%>
+				<div class="alert alert-danger">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<p><%=error.getMensaje() %>
+				</div>									
+				<%} %>
 
 				<!-- Main -->
 					<section id="main" class="wrapper">
@@ -119,6 +123,8 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+			
+			<script src="/EducATe_-_FrontEnd/assets/js/bootstrap.js"></script>
 
 	</body>
 </html>
