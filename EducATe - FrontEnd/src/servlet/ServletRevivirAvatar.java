@@ -36,7 +36,7 @@ public class ServletRevivirAvatar extends HttpServlet {
 				sesion.setAttribute("currentSessionUser",user);
 				request.getRequestDispatcher("/ServletListarAlimentos").forward(request, response);
 			}catch(RemoteException e){
-				ErrorDTO error = new ErrorDTO(1,e.detail.getMessage());
+				ErrorDTO error = new ErrorDTO(5,e.detail.getMessage());
 				request.setAttribute("error", error);
 				request.getRequestDispatcher("/ServletListarAlimentos").forward(request, response);
 			}
