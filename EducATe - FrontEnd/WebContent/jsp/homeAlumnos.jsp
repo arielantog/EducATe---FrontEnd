@@ -3,6 +3,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="dto.AlumnoDTO" %>
 <%@ page import="dto.TemaDTO" %>
+<%@ page import="dto.AvatarDTO" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <%
@@ -45,7 +46,11 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 					<section id="main" class="wrapper">
 		            <!-- Imagen Avatar -->
 		            <div class="avatar-principal-alumnos">
-	              		<img class="avatar-principal-alumnos" src="images/avatar.png" alt="">
+		            	<%if(request.getAttribute("avatar") != null){
+			      			AvatarDTO avatar = (AvatarDTO)request.getAttribute("avatar");
+			      		%>
+	              		<img class="avatar-principal-alumnos" src="<%=avatar.getTipoAvatar().getUrl()%>" alt="">
+	              		<% } %>
 		              	<p><a href="/EducATe_-_FrontEnd/ServletListarAlimentos">Mi avatar</a></p>
 		            </div>
 		            <div class="inner">

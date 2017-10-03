@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dto.DocenteDTO;
+import dto.ErrorDTO;
 import rmi.RmiClient;
 
 @WebServlet("/ServletNuevoDocente")
@@ -33,16 +35,29 @@ public class ServletNuevoDocente extends HttpServlet {
 			String password = request.getParameter("password");
 			String mail = request.getParameter("mail");
 			
-			DocenteDTO docente = RmiClient.getInstance().nuevoDocente(tipoDocumento, nroDocumento, nombre, apellido, password, mail);
-			
-			HttpSession sesion = request.getSession(true);
-			//Guardo la sesion del usuario que se acaba de loguear
-			sesion.setAttribute("currentSessionUser",docente);
-			
-			request.setAttribute("docente", docente); 
-			request.getRequestDispatcher("/jsp/homeDocentes.jsp").forward(request, response);
-			
-			System.out.println("El docente agregado es el: " + docente);
+			try{
+				DocenteDTO docente = RmiClient.getInstance().nuevoDocente(tipoDocumento, nroDocumento, nombre, apellido, password, mail);
+				HttpSession sesion = request.getSession(true);
+				//Guardo la sesion del usuario que se acaba de loguear
+				sesion.setAttribute("currentSessionUser",docente);
+				
+				request.setAttribute("docente", docente); 
+				request.getRequestDispatcher("/jsp/homeDocentes.jsp").forward(request, response);
+				
+				System.out.println("El docente agregado es el: " + docente);
+			}catch(RemoteException e){
+				ErrorDTO error = new ErrorDTO(2,e.detail.getMessage());
+				
+				request.setAttribute("error", error);
+				request.setAttribute("tipoDocumento", tipoDocumento);
+				request.setAttribute("nombre", nombre);
+				request.setAttribute("apellido", apellido);
+				request.setAttribute("password", password);
+				request.setAttribute("mail", mail);
+				
+				request.getRequestDispatcher("/nuevoDocente.jsp").forward(request, response);
+			}
+
 		} catch (Exception e) {
 			System.out.println(e);
 			

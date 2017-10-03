@@ -139,7 +139,7 @@
 										</li>
 										<li>
 											<ul class="actions">
-											<li><a href="nuevoDocente.html" class="button submit">Registrate</a></li>
+											<li><a href="nuevoDocente.jsp" class="button submit">Registrate</a></li>
 										</ul>
 										</li>
 									</ul>

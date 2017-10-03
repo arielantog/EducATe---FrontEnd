@@ -54,7 +54,7 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 			      			%>
 			      			<p><%=avatar.getHambre()%>/<%=avatar.getTipoAvatar().getAlimentoMax()%></p>
 			      			<progress max=<%=avatar.getTipoAvatar().getAlimentoMax()%> value=<%=avatar.getHambre()%>></progress>
-			            	<img class="avatar-principal" src="<%=avatar.getTipoAvatar().getUrl()%>" alt="">
+			            	<img src="<%=avatar.getTipoAvatar().getUrl()%>" alt="Imagen Avatar">
 			            	<% } %>
 			            </div>
             			<div class="alimentos-miAvatar">
@@ -89,8 +89,8 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 						<%if(request.getAttribute("avatar") != null){
 			      					AvatarDTO avatar = (AvatarDTO)request.getAttribute("avatar");
 			      			%>
-						<a href="/EducATe_-_FrontEnd/ServletEvolucionarAvatar">Evolucionar (<%=avatar.getTipoAvatar().getPrecioEvolucion() %>)</a>
-						<a href="/EducATe_-_FrontEnd/ServletRevivirAvatar">Revivir (<%=avatar.getTipoAvatar().getPrecioRevivir() %>)</a>
+						<a class="button" href="/EducATe_-_FrontEnd/ServletEvolucionarAvatar">Evolucionar (<%=avatar.getTipoAvatar().getPrecioEvolucion() %>)</a>
+						<a class="button" href="/EducATe_-_FrontEnd/ServletRevivirAvatar">Revivir (<%=avatar.getTipoAvatar().getPrecioRevivir() %>)</a>
 						<% } %>
 					</div>
     		</div> <!-- del wrapper -->

@@ -40,16 +40,11 @@ public class RmiClient {
 	}
 
 	public AlumnoDTO nuevoAlumno(String tipoDocumento, int nroDocumento, String nombre, String apellido, String usuario, String password, String mail) throws RemoteException{
-			return Rmi.nuevoAlumno(tipoDocumento, nroDocumento, nombre, apellido, usuario, password, mail);
+		return Rmi.nuevoAlumno(tipoDocumento, nroDocumento, nombre, apellido, usuario, password, mail);
 	}
 
 	public DocenteDTO nuevoDocente(String tipoDocumento, int nroDocumento, String nombre, String apellido, String password, String mail) throws RemoteException{
-		try {
-			return Rmi.nuevoDocente(tipoDocumento, nroDocumento, nombre, apellido, password, mail);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+		return Rmi.nuevoDocente(tipoDocumento, nroDocumento, nombre, apellido, password, mail);
 	}
 
 	public DocenteDTO loginDocente(String tipoDocumento, int nroDocumento, String password) throws RemoteException{
@@ -181,24 +176,12 @@ public class RmiClient {
 		return 0;
 	}
 
-	public AlumnoDTO alumnoEvolucionarAvatar(int nroAlumno) {
-		try{
-			return Rmi.alumnoEvolucionarAvatar(nroAlumno);
-		}
-		catch (Exception e){
-			e.printStackTrace();
-		}
-		return null;
+	public AlumnoDTO alumnoEvolucionarAvatar(int nroAlumno) throws RemoteException {
+		return Rmi.alumnoEvolucionarAvatar(nroAlumno);
 	}
 
-	public AlumnoDTO alumnoRevivirAvatar(int nroAlumno) {
-		try{
-			return Rmi.alumnoRevivirAvatar(nroAlumno);
-		}
-		catch (Exception e){
-			e.printStackTrace();
-		}
-		return null;
+	public AlumnoDTO alumnoRevivirAvatar(int nroAlumno) throws RemoteException {
+		return Rmi.alumnoRevivirAvatar(nroAlumno);
 	}
 
 	public AlumnoDTO buscarAlumnoAsignarCurso(String tipoDocumento, int nroDocumento) {
@@ -221,14 +204,8 @@ public class RmiClient {
 		return null;
 	}
 	
-	public AlumnoDTO alumnoAlimentarAvatar(int nroAlumno, int nroAlimento) {
-		try{
-			return Rmi.alumnoAlimentarAvatar(nroAlumno, nroAlimento);
-		}
-		catch (Exception e){
-			e.printStackTrace();
-		}
-		return null;
+	public AlumnoDTO alumnoAlimentarAvatar(int nroAlumno, int nroAlimento) throws RemoteException {
+		return Rmi.alumnoAlimentarAvatar(nroAlumno, nroAlimento);
 	}
 	
 
