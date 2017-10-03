@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import rmi.RmiClient;
 import dto.AlumnoDTO;
+import dto.ErrorDTO;
 
 @WebServlet("/ServletRevivirAvatar")
 public class ServletRevivirAvatar extends HttpServlet {
@@ -29,10 +31,16 @@ public class ServletRevivirAvatar extends HttpServlet {
 			System.out.println("Llegue al ServletRevivirAvatar");
 			HttpSession sesion = request.getSession();
 			AlumnoDTO user = (AlumnoDTO) sesion.getAttribute("currentSessionUser");
+			try{
+				user = RmiClient.getInstance().alumnoRevivirAvatar(user.getId());
+				sesion.setAttribute("currentSessionUser",user);
+				request.getRequestDispatcher("/ServletListarAlimentos").forward(request, response);
+			}catch(RemoteException e){
+				ErrorDTO error = new ErrorDTO(1,e.detail.getMessage());
+				request.setAttribute("error", error);
+				request.getRequestDispatcher("/ServletListarAlimentos").forward(request, response);
+			}
 			
-			user = RmiClient.getInstance().alumnoRevivirAvatar(user.getId());
-			sesion.setAttribute("currentSessionUser",user);
-			request.getRequestDispatcher("/ServletListarAlimentos").forward(request, response);
 			
 		} catch (Exception e) {
 			System.out.println(e);
