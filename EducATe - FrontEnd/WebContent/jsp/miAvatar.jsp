@@ -4,6 +4,7 @@
 <%@ page import="dto.AlimentoDTO" %>
 <%@ page import="dto.AlumnoDTO" %>
 <%@ page import="dto.AvatarDTO" %>
+<%@ page import="dto.ErrorDTO" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <%
@@ -20,6 +21,12 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
 	<body>
+		<!-- Error Message -->
+		<%if (request.getAttribute("error") != null ){ 
+			ErrorDTO error = (ErrorDTO)request.getAttribute("error");
+		%>									
+		<script>alert("<%=error.getMensaje()%>");</script>
+		<%} %>
 
 		<!-- Header -->
 			<header id="header">
