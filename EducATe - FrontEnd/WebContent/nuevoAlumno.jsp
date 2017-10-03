@@ -15,7 +15,6 @@
 	</head>
 	<body>
 		<!-- Error Message -->
-		
 		<%if (request.getAttribute("error") != null ){ 
 			ErrorDTO error = (ErrorDTO)request.getAttribute("error");
 		%>									

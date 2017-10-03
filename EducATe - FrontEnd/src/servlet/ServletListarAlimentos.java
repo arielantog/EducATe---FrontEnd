@@ -39,6 +39,7 @@ public class ServletListarAlimentos extends HttpServlet {
 			
 			user = RmiClient.getInstance().traerPerfilAlumno(user.getUsuario());
 			sesion.setAttribute("currentSessionUser",user);
+			
 			request.getRequestDispatcher("/jsp/miAvatar.jsp").forward(request, response);
 		} catch(Exception e){
 			e.printStackTrace();

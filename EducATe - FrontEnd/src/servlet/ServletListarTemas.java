@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dto.AlumnoDTO;
+import dto.AvatarDTO;
 import dto.TemaDTO;
 import rmi.RmiClient;
 
@@ -28,6 +31,10 @@ public class ServletListarTemas extends HttpServlet {
 			request.setAttribute("sesion", sesion);
 			List<TemaDTO> temas = RmiClient.getInstance().listarTemas();
 			request.setAttribute("temas", temas);
+			
+			AlumnoDTO user = (AlumnoDTO) sesion.getAttribute("currentSessionUser");
+			AvatarDTO avatar = user.getAvatar();
+			request.setAttribute("avatar", avatar);
 			
 			request.getRequestDispatcher("/jsp/homeAlumnos.jsp").forward(request, response);
 			

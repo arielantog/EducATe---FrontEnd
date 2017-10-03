@@ -181,24 +181,12 @@ public class RmiClient {
 		return 0;
 	}
 
-	public AlumnoDTO alumnoEvolucionarAvatar(int nroAlumno) {
-		try{
-			return Rmi.alumnoEvolucionarAvatar(nroAlumno);
-		}
-		catch (Exception e){
-			e.printStackTrace();
-		}
-		return null;
+	public AlumnoDTO alumnoEvolucionarAvatar(int nroAlumno) throws RemoteException {
+		return Rmi.alumnoEvolucionarAvatar(nroAlumno);
 	}
 
-	public AlumnoDTO alumnoRevivirAvatar(int nroAlumno) {
-		try{
-			return Rmi.alumnoRevivirAvatar(nroAlumno);
-		}
-		catch (Exception e){
-			e.printStackTrace();
-		}
-		return null;
+	public AlumnoDTO alumnoRevivirAvatar(int nroAlumno) throws RemoteException {
+		return Rmi.alumnoRevivirAvatar(nroAlumno);
 	}
 
 	public AlumnoDTO buscarAlumnoAsignarCurso(String tipoDocumento, int nroDocumento) {
@@ -221,14 +209,8 @@ public class RmiClient {
 		return null;
 	}
 	
-	public AlumnoDTO alumnoAlimentarAvatar(int nroAlumno, int nroAlimento) {
-		try{
-			return Rmi.alumnoAlimentarAvatar(nroAlumno, nroAlimento);
-		}
-		catch (Exception e){
-			e.printStackTrace();
-		}
-		return null;
+	public AlumnoDTO alumnoAlimentarAvatar(int nroAlumno, int nroAlimento) throws RemoteException {
+		return Rmi.alumnoAlimentarAvatar(nroAlumno, nroAlimento);
 	}
 	
 
