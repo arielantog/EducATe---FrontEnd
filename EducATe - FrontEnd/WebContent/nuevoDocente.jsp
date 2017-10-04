@@ -58,15 +58,33 @@
 								<label for="nroDocumento">Número de documento</label>
 								<input name="nroDocumento" type="text">
 								<label for="nombre">Nombre</label>
-								<input name="nombre" type="text">
+								<%if (request.getAttribute("nombre") != null ){ 
+									String nombre = (String)request.getAttribute("nombre");
+								%>									
+									<input name="nombre" type="text" value="<%=nombre%>">
+								<%}else{ %>
+									<input name="nombre" type="text">
+								<%} %>
 								<label for="apellido">Apellido</label>
-								<input name="apellido" type="text">
+								<%if (request.getAttribute("apellido") != null ){ 
+									String apellido = (String)request.getAttribute("apellido");
+								%>									
+									<input name="apellido" type="text" value="<%=apellido%>">
+								<%}else{ %>
+									<input name="apellido" type="text">
+								<%} %>
 								<label for="password">Contraseña</label>
 								<input name="password" type="password">
 								<label for="repeatPassword">Repetir Contraseña</label>
 								<input name="repeatPassword" type="password">
-								<label for="mail">Email</label>
-								<input name="mail" type="email">
+								<label for="email">Email</label>
+								<%if (request.getAttribute("email") != null ){ 
+									String email = (String)request.getAttribute("email");
+								%>									
+									<input name="email" type="email" value="<%=email%>">
+								<%}else{ %>
+									<input name="email" type="email">
+								<%} %>
 							<button type="submit">Registrar</button>
 							</form>
 							<!-- Fin de formulario -->

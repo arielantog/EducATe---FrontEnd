@@ -33,10 +33,10 @@ public class ServletNuevoDocente extends HttpServlet {
 			String nombre = request.getParameter("nombre");
 			String apellido = request.getParameter("apellido");
 			String password = request.getParameter("password");
-			String mail = request.getParameter("mail");
+			String email = request.getParameter("email");
 			
 			try{
-				DocenteDTO docente = RmiClient.getInstance().nuevoDocente(tipoDocumento, nroDocumento, nombre, apellido, password, mail);
+				DocenteDTO docente = RmiClient.getInstance().nuevoDocente(tipoDocumento, nroDocumento, nombre, apellido, password, email);
 				HttpSession sesion = request.getSession(true);
 				//Guardo la sesion del usuario que se acaba de loguear
 				sesion.setAttribute("currentSessionUser",docente);
@@ -49,11 +49,9 @@ public class ServletNuevoDocente extends HttpServlet {
 				ErrorDTO error = new ErrorDTO(2,e.detail.getMessage());
 				
 				request.setAttribute("error", error);
-				request.setAttribute("tipoDocumento", tipoDocumento);
 				request.setAttribute("nombre", nombre);
 				request.setAttribute("apellido", apellido);
-				request.setAttribute("password", password);
-				request.setAttribute("mail", mail);
+				request.setAttribute("email", email);
 				
 				request.getRequestDispatcher("/nuevoDocente.jsp").forward(request, response);
 			}
