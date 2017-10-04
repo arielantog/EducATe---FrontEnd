@@ -12,6 +12,28 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		
+		<script>
+	        function validarFormulario(){
+	            
+	            var nroDocumento = window.document.getElementById('nroDocumento').value;
+	            var password = window.document.getElementById('password').value;
+	            var repeatPassword = window.document.getElementById('repeatPassword').value;
+	           
+	 
+	            if(isNaN(nroDocumento)){
+	                alert('El número de documento sólo puede contener números.');
+	                return false;
+	            }
+	            if(password != repeatPassword){
+	            	alert('Las contraseñas deben ser iguales.');
+	                return false;
+	            }
+	        
+	            return true;
+	        }
+    	</script>
+		
 	</head>
 	<body>
 	
@@ -43,10 +65,10 @@
 							<h1 class="major">Registrarse como Docente</h1>
 							<span class="image fit"><img src="images/nuevoDocente.jpg" alt="" /></span>
 							<!-- Inicio de formulario -->
-							<form action="ServletNuevoDocente" method="post">
+							<form action="ServletNuevoDocente" method="post" onsubmit="return validarFormulario()">
 								<!-- Inicio Tipo de Documento -->
 								<label for="tipoDocumento">Tipo de documento</label>
-								<select id="tipoDocumento" name="tipoDocumento">
+								<select id="tipoDocumento" name="tipoDocumento" required>
 									<option value="" selected="selected">- Selecciona -</option>
 									<option value="DNI">DNI</option>
 									<option value="Pasaporte">Pasaporte</option>
@@ -56,27 +78,27 @@
 								</select>
 								<!-- Fin Tipo de Documento -->
 								<label for="nroDocumento">Número de documento</label>
-								<input name="nroDocumento" type="text">
+								<input id="nroDocumento" name="nroDocumento" type="text">
 								<label for="nombre">Nombre</label>
 								<%if (request.getAttribute("nombre") != null ){ 
 									String nombre = (String)request.getAttribute("nombre");
 								%>									
-									<input name="nombre" type="text" value="<%=nombre%>">
+									<input name="nombre" type="text" value="<%=nombre%>" required>
 								<%}else{ %>
-									<input name="nombre" type="text">
+									<input name="nombre" type="text" required>
 								<%} %>
 								<label for="apellido">Apellido</label>
 								<%if (request.getAttribute("apellido") != null ){ 
 									String apellido = (String)request.getAttribute("apellido");
 								%>									
-									<input name="apellido" type="text" value="<%=apellido%>">
+									<input name="apellido" type="text" value="<%=apellido%>" required>
 								<%}else{ %>
-									<input name="apellido" type="text">
+									<input name="apellido" type="text" required>
 								<%} %>
 								<label for="password">Contraseña</label>
-								<input name="password" type="password">
+								<input id="password" name="password" type="password" required>
 								<label for="repeatPassword">Repetir Contraseña</label>
-								<input name="repeatPassword" type="password">
+								<input id="repeatPassword" name="repeatPassword" type="password" required>
 								<label for="email">Email</label>
 								<%if (request.getAttribute("email") != null ){ 
 									String email = (String)request.getAttribute("email");
