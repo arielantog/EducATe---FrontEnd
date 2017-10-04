@@ -47,10 +47,10 @@
 
 		<!-- Header -->
 			<header id="header">
-				<a href="index.jsp" class="title">EducATe</a>
+				<a href="index.jsp" class="title no-underline">EducATe</a>
 				<nav>
 					<ul>
-						<li><a href="index.jsp">Home</a></li>
+						<li><a href="index.jsp" class="no-underline">Home</a></li>
 						
 					</ul>
 				</nav>
