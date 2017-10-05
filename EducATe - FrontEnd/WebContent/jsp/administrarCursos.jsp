@@ -9,7 +9,6 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Administrar Cursos</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Home Alumnos</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -18,6 +17,26 @@
 		<link rel="stylesheet" href="/EducATe_-_FrontEnd/assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	    
+	   <script>
+	 // TODO Poner el foco en el input del modal, NINGUNA DE ESAS ANDA
+// 			function setFocusToInput() {
+// 			    document.getElementById("nombreCurso").focus();
+// 			}
+
+// 			$('#myModal').on('shown.bs.modal', function() {
+// 				  $('#nombreCurso').focus();
+// 				});
+
+// 			$('#myModal').on('shown', function () {
+// 			    $('#nombreCurso').focus();
+// 			})
+
+// 			$("#myModal").on("shown", function() {
+// 			    document.activeElement.blur();
+// 			    $(this).find(".modal-body modal-body-docente :input:visible").first().focus();
+// 			});
+		</script>
 	   
 	</head>
 	<body>
@@ -60,7 +79,7 @@
 				 		  <% } else {%><tr><td>Sin cursos</td></tr> <%}%>
 					    </table>
 						<div class="bottom-buttons">
-		        			<a class="bottom-table-link"  data-toggle="modal" data-target="#myModal">Nuevo curso</a>
+		        			<a class="bottom-table-link"  data-toggle="modal" data-target="#myModal" onclick="setFocusToInput()">Nuevo curso</a>
 						</div>
 					</section>
 					
@@ -77,7 +96,7 @@
 					        </div>
 					        <div class="modal-body modal-body-docente">
 						        <form method="POST" id="nuevoCursoForm" action="/EducATe_-_FrontEnd/ServletDocenteAgregarCurso">
-						            <p>Nombre del curso:</p>
+						            <p>Nombre del curso:</p>			      
 									<input name="nombreCurso" id="nombreCurso" type="text">
 								</form>
 					        </div>
@@ -88,11 +107,8 @@
 					      </div>
 					       
 					    </div>
-					  </div>
-					
-					  
-				
-					
+					  </div>	
+			
 			</div>
 			
 		<!-- Footer -->
@@ -112,7 +128,6 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
-			
     		<script src="/EducATe_-_FrontEnd/assets/js/bootstrap.js"></script>
 
 	</body>

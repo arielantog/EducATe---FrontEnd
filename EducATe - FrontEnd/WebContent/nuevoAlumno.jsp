@@ -19,14 +19,24 @@
             	var nroDocumento = window.document.getElementById('nroDocumento').value;
             	var password = window.document.getElementById('password').value;
             	var repeatPassword = window.document.getElementById('repeatPassword').value;
- 
+
+            	//Si el nroDocumento no es solo números
             	if(isNaN(nroDocumento)){
-                	alert('El número de documento sólo puede contener números.');
+            		document.getElementById('errNroDocumento').style.display='block'; 
+                	//alert('El número de documento sólo puede contener números.');
                 	return false;
             	}
+            	else{
+            		document.getElementById('errNroDocumento').style.display='none';
+             	}
+            	//Si las claves no coinciden
             	if(password != repeatPassword){
-	            	alert('Las contraseñas deben ser iguales.');
-                	return false;
+            		document.getElementById('errPassword').style.display='block'; 
+            		//alert('Las contraseñas deben ser iguales.');
+            		return false;
+            	}
+           	    else {
+	           	    document.getElementById('errPasword').style.display='none';
             	}
         
             	return true;
@@ -35,26 +45,30 @@
         
     </head>
     <body>
-        <!-- Error Message -->
-        <%if (request.getAttribute("error") != null ){ 
-            ErrorDTO error = (ErrorDTO)request.getAttribute("error");
-        %>                                   
-        <script>alert("<%=error.getMensaje()%>");</script>
-        <%} %>
         
         <!-- Header -->
             <header id="header">
-                <a href="index.jsp" class="title">EducATe</a>
+                <a href="index.jsp" class="title no-underline">EducATe</a>
                 <nav>
                     <ul>
-                        <li><a href="index.jsp">Home</a></li>
+                        <li><a href="index.jsp" class="no-underline">Home</a></li>
                         
                     </ul>
                 </nav>
             </header>
         <!-- Wrapper -->
             <div id="wrapper">
- 
+ 			
+ 				<!-- Error Message -->
+				<%if (request.getAttribute("error") != null ){ 
+					ErrorDTO error = (ErrorDTO)request.getAttribute("error");
+				%>
+				<div class="alert alert-danger fade in">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<p><%=error.getMensaje() %>
+				</div>									
+				<%} %>
+ 			
                 <!-- Main -->
                     <section id="main" class="wrapper">
                         <div class="inner">
@@ -104,11 +118,15 @@
                                         <%} %>
                                     <%} %>
                                 </select>
-                                <!-- Fin Tipo de Documento -->
-                                <label for="nroDocumento">Número de documento</label>
+                                <!-- Fin Tipo de Documento --> 
+                                <!-- Error en la nro documento -->
+                                <div class="err-password-div">
+                                	<label for="nroDocumento">Número de documento</label>
+                                	<label class="err-password" id="errNroDocumento" style="display:none">* El número de documento sólo puede contener números.</label>
+                                </div>
                                 <%if (request.getAttribute("nroDocumento") != null ){ 
                                     int nroDocumento = (int)request.getAttribute("nroDocumento");
-                                %>                                   
+                                %>                                 
                                     <input id="nroDocumento" name="nroDocumento" type="text" value="<%=nroDocumento%>" required>
                                 <%}else{ %>
                                     <input id="nroDocumento" name="nroDocumento" type="text" required>
@@ -130,8 +148,14 @@
                                     <input name="apellido" type="text" required>
                                 <%} %>
                                 <label for="usuario">Nombre de Usuario</label>
-                                <input name="usuario" type="text" required>
-                                <label for="password">Contraseña</label>
+                                <input name="usuario" type="text" required>                        
+                         							
+								<!-- Error en la password -->
+                                <div class="err-password-div">
+	                                <label for="password">Contraseña</label>
+	                                <label class="err-password" id="errPassword" style="display:none">* Las contraseñas deben ser iguales.</label>
+                                </div>
+                                
                                 <input id="password" name="password" type="password" required>
                                 <label for="repeatPassword">Repetir Contraseña</label>
                                 <input id="repeatPassword" name="repeatPassword" type="password" required>
@@ -143,7 +167,7 @@
                                 <%}else{ %>
                                     <input name="email" type="email">
                                 <%} %>
-                                <button type="submit">Registrar</button>
+                                <button id="enviar" type="submit">Registrar</button>
                             </form>
                             <!-- Fin de formulario -->
                         </div>
@@ -168,6 +192,7 @@
             <script src="assets/js/util.js"></script>
             <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
             <script src="assets/js/main.js"></script>
+            <script src="/EducATe_-_FrontEnd/assets/js/bootstrap.js"></script>
  
     </body>
 </html>

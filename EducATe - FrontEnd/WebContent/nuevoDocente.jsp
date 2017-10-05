@@ -8,42 +8,44 @@
 		<title>Nuevo Docente</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/EducATe_-_FrontEnd/assets/css/bootstrap.css">
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		
 		<script>
-	        function validarFormulario(){
-	            
-	            var nroDocumento = window.document.getElementById('nroDocumento').value;
-	            var password = window.document.getElementById('password').value;
-	            var repeatPassword = window.document.getElementById('repeatPassword').value;
-	           
-	 
-	            if(isNaN(nroDocumento)){
-	                alert('El número de documento sólo puede contener números.');
-	                return false;
-	            }
-	            if(password != repeatPassword){
-	            	alert('Las contraseñas deben ser iguales.');
-	                return false;
-	            }
-	        
-	            return true;
-	        }
+        	function validarFormulario(){
+            
+            	var nroDocumento = window.document.getElementById('nroDocumento').value;
+            	var password = window.document.getElementById('password').value;
+            	var repeatPassword = window.document.getElementById('repeatPassword').value;
+
+            	//Si el nroDocumento no es solo números
+            	if(isNaN(nroDocumento)){
+            		document.getElementById('errNroDocumento').style.display='block'; 
+                	//alert('El número de documento sólo puede contener números.');
+                	return false;
+            	}
+            	else{
+            		document.getElementById('errNroDocumento').style.display='none';
+             	}
+            	//Si las claves no coinciden
+            	if(password != repeatPassword){
+            		document.getElementById('errPassword').style.display='block'; 
+            		//alert('Las contraseñas deben ser iguales.');
+            		return false;
+            	}
+           	    else {
+	           	    document.getElementById('errPasword').style.display='none';
+            	}
+        
+            	return true;
+        	}
     	</script>
 		
 	</head>
 	<body>
-	
-		<!-- Error Message -->
-		
-		<%if (request.getAttribute("error") != null ){ 
-			ErrorDTO error = (ErrorDTO)request.getAttribute("error");
-		%>									
-		<script>alert("<%=error.getMensaje()%>");</script>
-		<%} %>
 
 		<!-- Header -->
 			<header id="header">
@@ -58,7 +60,17 @@
 
 		<!-- Wrapper -->
 			<div id="wrapper">
-
+				
+				<!-- Error Message -->
+				<%if (request.getAttribute("error") != null ){ 
+					ErrorDTO error = (ErrorDTO)request.getAttribute("error");
+				%>
+				<div class="alert alert-danger fade in">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<p><%=error.getMensaje() %>
+				</div>									
+				<%} %>
+				
 				<!-- Main -->
 					<section id="main" class="wrapper">
 						<div class="inner">
@@ -77,7 +89,11 @@
 									<option value="PartidaNacimiento">P. Nac</option>
 								</select>
 								<!-- Fin Tipo de Documento -->
-								<label for="nroDocumento">Número de documento</label>
+								<!-- Error en la nro documento -->
+                                <div class="err-password-div">
+                                	<label for="nroDocumento">Número de documento</label>
+                                	<label class="err-password" id="errNroDocumento" style="display:none">* El número de documento sólo puede contener números.</label>
+                                </div>
 								<input id="nroDocumento" name="nroDocumento" type="text">
 								<label for="nombre">Nombre</label>
 								<%if (request.getAttribute("nombre") != null ){ 
@@ -95,7 +111,13 @@
 								<%}else{ %>
 									<input name="apellido" type="text" required>
 								<%} %>
-								<label for="password">Contraseña</label>
+								
+								<!-- Error en la password -->
+                                <div class="err-password-div">
+	                                <label for="password">Contraseña</label>
+	                                <label class="err-password" id="errPassword" style="display:none">* Las contraseñas deben ser iguales.</label>
+                                </div>
+							
 								<input id="password" name="password" type="password" required>
 								<label for="repeatPassword">Repetir Contraseña</label>
 								<input id="repeatPassword" name="repeatPassword" type="password" required>
@@ -130,6 +152,6 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
-
+			<script src="/EducATe_-_FrontEnd/assets/js/bootstrap.js"></script>
 	</body>
 </html>

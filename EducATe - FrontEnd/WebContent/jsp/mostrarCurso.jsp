@@ -11,10 +11,10 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title><%=curso.getDescripcion() %></title>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Home Alumnos</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/EducATe_-_FrontEnd/assets/css/bootstrap.css">
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="/EducATe_-_FrontEnd/assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
@@ -94,6 +94,7 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+			<script src="/EducATe_-_FrontEnd/assets/js/bootstrap.js"></script>
 
 	</body>
 </html>

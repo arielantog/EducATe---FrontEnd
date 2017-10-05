@@ -4142,6 +4142,15 @@
 		color: red;
 	}
 	
+	.err-password {
+		color: red;
+		margin-left: 30px;
+	}
+	
+	.err-password-div {
+		display: flex;
+	}
+	
 	.close {
 		float: right;
 		font-size: 21px;
@@ -4181,3 +4190,22 @@
     .no-underline:hover {
     	text-decoration: none;
     }
+    
+    //** NO ANDA ** Copia de la clase de bootstrap porque en algunas paginas no puedo usar el css de bootstrap
+    .fade {
+	    opacity: 0;
+	    -webkit-transition: opacity .15s linear;
+	    -o-transition: opacity .15s linear;
+	    transition: opacity .15s linear;
+	}
+	
+	.in {
+		opacity: 1;
+	}
+	
+	.fade.in {
+  		opacity: 1; 
+	}
+	//**
+	
+	
