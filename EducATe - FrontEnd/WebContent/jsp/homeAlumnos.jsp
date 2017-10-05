@@ -26,14 +26,14 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 
 		<!-- Header -->
 			<header id="header">
-				<a href="/EducATe_-_FrontEnd/index.jsp" class="title">EducATe</a>
+				<a href="/EducATe_-_FrontEnd/index.jsp" class="title no-underline">EducATe</a>
 				<nav>
 					<ul>
 						<%if(user != null){%>
-						<li><a href="/EducATe_-_FrontEnd/jsp/homeAlumnos.jsp" class="active">Home Alumnos</a></li>
-						<li><a href="/EducATe_-_FrontEnd/ServletPerfilAlumno">Mi Perfil</a></li>
-						<li><a href="#">Puntos: <%=user.getPuntos()%></a></li>
-						<li><a href="#"><%=user.getNombre() %></a></li>
+						<li><a href="/EducATe_-_FrontEnd/jsp/homeAlumnos.jsp" class="active no-underline">Home Alumnos</a></li>
+						<li><a href="/EducATe_-_FrontEnd/ServletPerfilAlumno" class="no-underline">Mi Perfil</a></li>
+						<li><a href="#" class="no-underline">Puntos: <%=user.getPuntos()%></a></li>
+						<li><a href="#" class="no-underline"><%=user.getNombre() %></a></li>
 						<%} %>
 					</ul>
 				</nav>
