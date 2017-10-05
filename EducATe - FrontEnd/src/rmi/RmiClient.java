@@ -218,4 +218,8 @@ public class RmiClient {
 		}
 		return null;
 	}
+
+	public AlumnoDTO buscarAlumno(int nroAlumno) throws RemoteException{
+		return Rmi.buscarAlumno(nroAlumno);
+	}
 }
