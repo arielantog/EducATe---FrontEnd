@@ -7,7 +7,7 @@
 <%DocenteDTO user = (DocenteDTO) session.getAttribute("currentSessionUser");%>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Estadísticas</title>
+		<title>Efectividad por tema y lección</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="/EducATe_-_FrontEnd/assets/css/bootstrap.css">
@@ -39,19 +39,15 @@
 				
 					<section id="main" class="wrapper">
 	            		<div class="inner">
-							<h1 class="major">Estadísticas</h1>
+							<h1 class="major">Efectividad por tema y lección</h1>
 						</div>
 					</section>
 					<section class="lista-button">
-						<h3 class="table-title">Reportes</h3>
-						<div class="lista-alumnos-curso">
-             	 			<table border="1" cellpading="0" cellspacing="0">
-             	 				<tr><td><a href="/EducATe_-_FrontEnd/jsp/estadisticas - alumnosPorCurso.jsp">Alumnos por curso</a></td></tr>
-								<tr><td><a href="/EducATe_-_FrontEnd/jsp/estadisticas - participacionPorCurso.jsp">Participación y respuestas por cursos</a></td></tr>
-								<tr><td><a href="/EducATe_-_FrontEnd/jsp/estadisticas - efectividadPorLeccion.jsp">Efectividad por lección</a></td></tr>
-								<tr><td><a href="/EducATe_-_FrontEnd/jsp/estadisticas - efectividadPorTemaYLeccion.jsp">Efectividad por tema y lección</a></td></tr>
-			  		        </table>
-            			</div> <!--Fin de la tabla -->
+						<iframe 
+							width="1000" height="600" 
+							src="https://app.powerbi.com/view?r=eyJrIjoiMzQwNjc2YTYtNzk4Ny00Y2U1LWIzYjItMmNlNjcwNTRiNDE1IiwidCI6IjM0NDk3OWQwLWQzMWQtNGM1Ny04YmEwLTQ5MWFmZjRhY2FlZCIsImMiOjR9" 
+							frameborder="0" allowFullScreen="true">
+						</iframe>
 					</section>
 				</div>
 				
