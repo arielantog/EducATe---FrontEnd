@@ -4,19 +4,13 @@
 <%@ page import="dto.DocenteDTO" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<%
-//HttpSession objSesion = request.getSession(true); 
-//String user = request.getParameter("usuario"); //aqui tu identificador de usuario
-//Obtengo el usuario logeado
-DocenteDTO user = (DocenteDTO) session.getAttribute("currentSessionUser");
-//objSesion.setAttribute("usuario", user );
-//out.println("Poniendo usuario en sesion ...");
-%>
+<%DocenteDTO user = (DocenteDTO) session.getAttribute("currentSessionUser");%>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Home Docentes</title>
+		<title>Estadísticas</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/EducATe_-_FrontEnd/assets/css/bootstrap.css">
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="/EducATe_-_FrontEnd/assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
@@ -30,45 +24,46 @@ DocenteDTO user = (DocenteDTO) session.getAttribute("currentSessionUser");
 				<nav>
 					<ul>
 						<%if(user != null){%>
-						<li><a href="/EducATe_-_FrontEnd/jsp/homeDocentes.jsp" class="active no-underline">Home Docentes</a></li>
+						<li><a href="/EducATe_-_FrontEnd/jsp/homeDocentes.jsp" class="no-underline">Home Docentes</a></li>
 						<li><a href="/EducATe_-_FrontEnd/ServletPerfilDocente" class="no-underline">Mi Perfil</a></li>
 						<li><a href="#" class="no-underline"><%=user.getNombre() %></a></li>
 						<%} %>
 					</ul>
 				</nav>
 			</header>
-
-		<!-- Wrapper -->
-			<div id="wrapper">
-
+			
+			<!-- Wrapper -->
+				<div id="wrapper">
+				
 				<!-- Main -->
+				
 					<section id="main" class="wrapper">
-						<div class="inner">
-							<h1 class="major">Principal Docentes</h1>
-
-              				<div class="container container-home-docentes">
-	    						<form action="/EducATe_-_FrontEnd/ServletListarCursosPorDocente" method="POST">
-	    							<button type="submit" name="admCursos" class="home-docentes-buttons"> Administrar cursos</button>
-	    						</form>
-	    						<!-- <a href="/EducATe_-_FrontEnd/ServletListarCursosPorDocente" class="button submit home-docentes-buttons"> Administrar Cursos </a> -->
-	    						<form action="/EducATe_-_FrontEnd/jsp/estadisticas.jsp" method="POST">
-	    							<button type="submit" name="estadisticas" class="home-docentes-buttons">Estadísticas</button>
-    							</form>
-    						</div>
+	            		<div class="inner">
+							<h1 class="major">Estadísticas</h1>
 						</div>
 					</section>
-			</div>
-		
-		<!-- Footer -->	
-		<footer id="footer" class="wrapper style1-alt">
-			<div class="inner">
-				<ul class="menu">
-					<li>&copy; Amado Selene - Antognini.</li>
-				</ul>
-			</div>
-		</footer>
+					<section class="lista-button">
+						<h3 class="table-title">Gráficos</h3>
+						<div class="lista-alumnos-curso">
+             	 			<table border="1" cellpading="0" cellspacing="0">
+								<tr><td><a href="">Cursos</a></td></tr>
+								<tr><td><a href="">Efectividad por lección</a></td></tr>
+								<tr><td><a href="">Efectividad por juego y lección</a></td></tr>
+			  		        </table>
+            			</div> <!-- de la tabla -->
+					</section>
+				</div>
+				
+			<!-- Footer -->
+				<footer id="footer" class="wrapper style1-alt">
+					<div class="inner">
+						<ul class="menu">
+							<li>&copy; Amado Selene - Antognini.</li>
+						</ul>
+					</div>
+				</footer>
 
-		<!-- Scripts -->
+			<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
@@ -76,6 +71,7 @@ DocenteDTO user = (DocenteDTO) session.getAttribute("currentSessionUser");
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+			<script src="/EducATe_-_FrontEnd/assets/js/bootstrap.js"></script>
 
 	</body>
 </html>

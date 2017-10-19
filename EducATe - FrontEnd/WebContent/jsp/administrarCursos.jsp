@@ -64,25 +64,26 @@
 						<h1 class="major">Administrar Cursos</h1>
 					</div>
 					</section>
-					<section class="lista-button" id="principalAlumnos">
-						<table border="1" cellpading="0" cellspacing="0">
-		          			<caption><h3 class="table-title">Cursos</h3></caption>
-		          			
-		          			<%if(request.getAttribute("cursos") != null){
+					
+					<section class="lista-button">
+						<h3 class="table-title">Cursos</h3>
+						<div class="lista-alumnos-curso">
+							<table border="1" cellpading="0" cellspacing="0">
+							<%if(request.getAttribute("cursos") != null){
 		          				List<CursoDTO> cursos = (List<CursoDTO>)request.getAttribute("cursos");
 		          				for(CursoDTO c : cursos){%>
-					    	<tr>         	
-					            <td> <a href="ServletMostrarCurso?nroCurso=<%=c.getId()%>"><%=c.getDescripcion() %></a></td>
-					           
-					        </tr>
-					        	<% } %>
-				 		  <% } else {%><tr><td>Sin cursos</td></tr> <%}%>
-					    </table>
-						<div class="bottom-buttons">
+									<tr>         	
+				            			<td> <a href="ServletMostrarCurso?nroCurso=<%=c.getId()%>"><%=c.getDescripcion() %></a></td>
+				        			</tr>
+					  		 <% } %>
+					  	   <% } else {%><tr><td>Sin cursos</td></tr> <%}%>
+					  	  	</table>
+            			</div> <!-- de la tabla -->
+            			<div class="bottom-buttons">
 		        			<a class="bottom-table-link"  data-toggle="modal" data-target="#myModal" onclick="setFocusToInput()">Nuevo curso</a>
 						</div>
 					</section>
-					
+
 					<!-- Modal -->
 					
 					  <div class="modal fade" id="myModal" role="dialog">
