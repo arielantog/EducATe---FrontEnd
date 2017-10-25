@@ -4191,6 +4191,10 @@
     	text-decoration: none;
     }
     
+    .img-alimento {
+    	height: 50px;
+    }
+    
     //** NO ANDA ** Copia de la clase de bootstrap porque en algunas paginas no puedo usar el css de bootstrap
     .fade {
 	    opacity: 0;

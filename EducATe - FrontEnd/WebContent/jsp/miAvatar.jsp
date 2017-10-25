@@ -83,7 +83,7 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 								<tr>
 								
 									<th>Imagen</th>
-									<th>Nombre*</th>
+									<th>Nombre</th>
 									<th>Proteinas</th>
 									<th>Precio</th>
 									<th>Alimentar</th>
@@ -95,7 +95,7 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 				          					AlimentoDTO a = ialimento.next();
 								%>
 								<tr>
-				  		            <td>Imagen 1</td>
+				  		            <td><img class="img-alimento" src="<%=a.getUrl()%>" alt="Imagen Alimento"></td>
 				  		            <td><%=a.getNombre() %></td>
 				  		            <td><%=a.getProteinas() %></td>
 				  		            <td><%=a.getPrecio() %></td>
