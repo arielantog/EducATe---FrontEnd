@@ -32,6 +32,13 @@ public class ServletElegirJuegoConTema extends HttpServlet {
 			
 			int nroTema = Integer.parseInt(request.getParameter("nroTema"));
 			
+			//Para el prototipo - No existen juegos con estos temas
+			if (nroTema == 5 || nroTema == 6){
+				request.setAttribute("alumno", user);
+				request.getRequestDispatcher("/ServletListarTemas").forward(request, response);
+				return;
+			}
+			
 			int nroJuego = RmiClient.getInstance().elegirJuegoConTema(user.getId(),nroTema);
 			
 			switch (nroJuego){
