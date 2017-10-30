@@ -30,7 +30,7 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 				<nav>
 					<ul>
 						<%if(user != null){%>
-						<li><a href="/EducATe_-_FrontEnd/jsp/homeAlumnos.jsp" class="active no-underline">Home Alumnos</a></li>
+						<li><a href="/EducATe_-_FrontEnd/ServletListarTemas" class="active no-underline">Home Alumnos</a></li>
 						<li><a href="/EducATe_-_FrontEnd/ServletPerfilAlumno" class="no-underline">Mi Perfil</a></li>
 						<li><a href="#" class="no-underline">Puntos: <%=user.getPuntos()%></a></li>
 						<li><a href="#" class="no-underline"><%=user.getNombre() %></a></li>
