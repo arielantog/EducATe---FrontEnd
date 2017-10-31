@@ -31,7 +31,8 @@ public class ServletListarTemas extends HttpServlet {
 			request.setAttribute("sesion", sesion);
 			List<TemaDTO> temas = RmiClient.getInstance().listarTemas();
 			request.setAttribute("temas", temas);
-			
+			String error = (String) request.getAttribute("error");
+			request.setAttribute("error", error);
 			AlumnoDTO user = (AlumnoDTO) sesion.getAttribute("currentSessionUser");
 			AvatarDTO avatar = user.getAvatar();
 			request.setAttribute("avatar", avatar);

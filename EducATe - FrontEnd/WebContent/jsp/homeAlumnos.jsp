@@ -21,6 +21,15 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 		<link rel="stylesheet" href="/EducATe_-_FrontEnd/assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		
+		<script>
+		//NO ANDA
+			$(document).ready(function(){
+			    $("#close").click(function(){
+			        $("#alert").fadeOut("slow");
+			    });
+			});
+		</script>
 	</head>
 	<body>
 
@@ -41,6 +50,16 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 
 		<!-- Wrapper -->
 			<div id="wrapper">
+
+			<!-- Error Message -->
+    		<!-- Los temas 5 y 6 aun se encuentran en desarrollo -->
+				<%if (request.getAttribute("error") == "error"){ 
+				%>
+					<div id="alert" class="alert alert-danger fade in">
+						<a href="#" id="close" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<p>El juego se encuentra en desarrollo</p>
+					</div>									
+				<%} %>
 
 				<!-- Main -->
 					<section id="main" class="wrapper">
@@ -96,6 +115,8 @@ AlumnoDTO user = (AlumnoDTO) session.getAttribute("currentSessionUser");
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+			
+			<script src="/EducATe_-_FrontEnd/assets/js/bootstrap.js"></script>
 
 	</body>
 </html>

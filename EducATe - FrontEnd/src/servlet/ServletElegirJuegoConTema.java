@@ -34,6 +34,8 @@ public class ServletElegirJuegoConTema extends HttpServlet {
 			
 			//Para el prototipo - No existen juegos con estos temas
 			if (nroTema == 5 || nroTema == 6){
+				String error = "error";
+				request.setAttribute("error", error);
 				request.setAttribute("alumno", user);
 				request.getRequestDispatcher("/ServletListarTemas").forward(request, response);
 				return;
